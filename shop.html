@@ -110,6 +110,8 @@
         .filter-group {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
         .filter-btn {
             padding: 0.5rem 1.2rem;
@@ -240,6 +242,17 @@
             .shop-nav-links.open {
                 max-height: 400px;
                 padding: 1rem 0;
+            }
+        }
+        @media (max-width: 600px) {
+            .shop-products-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .filter-group {
+                justify-content: flex-start;
+                width: 100%;
             }
         }
     </style>
