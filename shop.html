@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | E-Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-blue: #1a2238;
+            --emerald: #21b573;
+            --gold: #ffe066;
+            --light-bg: #f5f7fa;
+            --card-bg: #232946;
+            --text-main: #f5f7fa;
+            --shadow: 0 4px 24px rgba(26,34,56,0.12);
+        }
+        body {
+            background: var(--light-bg);
+            color: var(--deep-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .shop-navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #1a2238 60%, #21b573 100%);
+            box-shadow: 0 2px 12px rgba(26,34,56,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+        }
+        .shop-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 2vw;
+        }
+        .shop-logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+        .shop-nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        .shop-nav-links li {
+            display: flex;
+        }
+        .shop-nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.4rem 1.1rem;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .shop-nav-link.active, .shop-nav-link:hover {
+            background: linear-gradient(90deg, #ffe066 60%, #21b573 100%);
+            color: #1a2238;
+            box-shadow: 0 2px 8px #ffe06644;
+        }
+        .shop-hero {
+            background: linear-gradient(120deg, #1a2238 60%, #21b573 100%);
+            color: var(--text-main);
+            padding: 6rem 0 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .shop-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .shop-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0e6f7;
+        }
+        .shop-products-section {
+            max-width: 1200px;
+            margin: 2rem auto 0 auto;
+            padding: 0 2vw 4rem 2vw;
+            position: relative;
+            z-index: 2;
+        }
+        .shop-products-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .shop-products-header h2 {
+            color: var(--deep-blue);
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            border: none;
+            background: var(--card-bg);
+            color: var(--gold);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .filter-btn.active {
+            background: linear-gradient(90deg, #ffe066, #21b573);
+            color: #1a2238;
+        }
+        .shop-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        .shop-product-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(26,34,56,0.10);
+            padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .shop-product-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(33,181,115,0.18);
+        }
+        .shop-product-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1.2rem;
+            border-radius: 12px;
+            background: #f5f7fa;
+            box-shadow: 0 2px 12px rgba(33,181,115,0.08);
+        }
+        .shop-product-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--emerald);
+        }
+        .shop-product-desc {
+            font-size: 1rem;
+            color: #1a2238;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        .shop-product-price {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .quick-view-btn {
+            background: linear-gradient(90deg, #21b573, #ffe066);
+            color: #1a2238;
+            border: none;
+            border-radius: 20px;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .quick-view-btn:hover {
+            background: #ffe066;
+            color: #21b573;
+        }
+        /* Quick View Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 20000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: rgba(26,34,56,0.45);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 18px;
+            padding: 2rem;
+            max-width: 400px;
+            margin: 2rem auto;
+            box-shadow: 0 8px 32px rgba(33,181,115,0.18);
+            text-align: center;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            .shop-products-grid {
+                grid-template-columns: 1fr;
+            }
+            .shop-nav-links {
+                flex-direction: column;
+                background: #1a2238;
+                position: absolute;
+                top: 60px;
+                right: 2vw;
+                width: 180px;
+                max-height: 0;
+                overflow: hidden;
+                box-shadow: 0 8px 32px #1a223888;
+                border-radius: 0 0 18px 18px;
+            }
+            .shop-nav-links.open {
+                max-height: 400px;
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="shop-navbar">
+        <nav class="shop-nav-container">
+            <div class="shop-logo">E-Shop</div>
+            <ul class="shop-nav-links">
+                <li><a href="ecommerce.html" class="shop-nav-link">Home</a></li>
+                <li><a href="#shop-products" class="shop-nav-link active">Shop</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+        </nav>
+    </header>
+    <section class="shop-hero">
+        <h1>Shop Our Products</h1>
+        <p>Browse our curated selection of modern, eco-friendly, and innovative products. Use the filters to find what you love!</p>
+    </section>
+    <section id="shop-products" class="shop-products-section">
+        <div class="shop-products-header">
+            <h2>All Products</h2>
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="eco">Eco</button>
+                <button class="filter-btn" data-filter="tech">Tech</button>
+                <button class="filter-btn" data-filter="fashion">Fashion</button>
+            </div>
+        </div>
+        <div class="shop-products-grid">
+            <div class="shop-product-card" data-category="eco">
+                <img src="https://images.unsplash.com/photo-1513708927688-890fe8b7e8b2?auto=format&fit=crop&w=400&q=80" alt="Eco Sneakers" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Eco Sneakers</div>
+                <div class="shop-product-desc">Sustainable, stylish sneakers for everyday comfort and eco-conscious living.</div>
+                <div class="shop-product-price">$89</div>
+                <button class="quick-view-btn" data-title="Eco Sneakers" data-desc="Sustainable, stylish sneakers for everyday comfort and eco-conscious living." data-price="$89" data-img="https://images.unsplash.com/photo-1513708927688-890fe8b7e8b2?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="fashion">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Urban Backpack" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Urban Backpack</div>
+                <div class="shop-product-desc">Minimalist, water-resistant backpack for work, travel, and adventure.</div>
+                <div class="shop-product-price">$59</div>
+                <button class="quick-view-btn" data-title="Urban Backpack" data-desc="Minimalist, water-resistant backpack for work, travel, and adventure." data-price="$59" data-img="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="tech">
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Wireless Headphones" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Wireless Headphones</div>
+                <div class="shop-product-desc">Experience premium sound and comfort with noise-cancelling technology.</div>
+                <div class="shop-product-price">$129</div>
+                <button class="quick-view-btn" data-title="Wireless Headphones" data-desc="Experience premium sound and comfort with noise-cancelling technology." data-price="$129" data-img="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="tech">
+                <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Smart Watch" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Smart Watch</div>
+                <div class="shop-product-desc">Track your fitness, notifications, and more with a sleek, modern design.</div>
+                <div class="shop-product-price">$149</div>
+                <button class="quick-view-btn" data-title="Smart Watch" data-desc="Track your fitness, notifications, and more with a sleek, modern design." data-price="$149" data-img="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <!-- New Products Below -->
+            <div class="shop-product-card" data-category="eco">
+                <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80" alt="Bamboo Toothbrush" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Bamboo Toothbrush</div>
+                <div class="shop-product-desc">Eco-friendly, biodegradable toothbrush made from sustainable bamboo.</div>
+                <div class="shop-product-price">$7</div>
+                <button class="quick-view-btn" data-title="Bamboo Toothbrush" data-desc="Eco-friendly, biodegradable toothbrush made from sustainable bamboo." data-price="$7" data-img="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="fashion">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Organic Cotton T-Shirt" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Organic Cotton T-Shirt</div>
+                <div class="shop-product-desc">Soft, breathable t-shirt made from 100% organic cotton. Available in multiple colors.</div>
+                <div class="shop-product-price">$25</div>
+                <button class="quick-view-btn" data-title="Organic Cotton T-Shirt" data-desc="Soft, breathable t-shirt made from 100% organic cotton. Available in multiple colors." data-price="$25" data-img="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="eco">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Reusable Water Bottle" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Reusable Water Bottle</div>
+                <div class="shop-product-desc">Stainless steel, insulated bottle keeps drinks cold for 24h or hot for 12h.</div>
+                <div class="shop-product-price">$19</div>
+                <button class="quick-view-btn" data-title="Reusable Water Bottle" data-desc="Stainless steel, insulated bottle keeps drinks cold for 24h or hot for 12h." data-price="$19" data-img="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="tech">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80" alt="Bluetooth Speaker" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Bluetooth Speaker</div>
+                <div class="shop-product-desc">Portable, waterproof speaker with 12-hour battery life and deep bass.</div>
+                <div class="shop-product-price">$39</div>
+                <button class="quick-view-btn" data-title="Bluetooth Speaker" data-desc="Portable, waterproof speaker with 12-hour battery life and deep bass." data-price="$39" data-img="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="fashion">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Classic Sunglasses" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Classic Sunglasses</div>
+                <div class="shop-product-desc">Timeless, UV-protected sunglasses with a lightweight, comfortable frame.</div>
+                <div class="shop-product-price">$49</div>
+                <button class="quick-view-btn" data-title="Classic Sunglasses" data-desc="Timeless, UV-protected sunglasses with a lightweight, comfortable frame." data-price="$49" data-img="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="tech">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Smart Thermostat" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Smart Thermostat</div>
+                <div class="shop-product-desc">Control your home's temperature remotely and save on energy bills.</div>
+                <div class="shop-product-price">$99</div>
+                <button class="quick-view-btn" data-title="Smart Thermostat" data-desc="Control your home's temperature remotely and save on energy bills." data-price="$99" data-img="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+            <div class="shop-product-card" data-category="eco">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Canvas Tote Bag" class="shop-product-img" loading="lazy" />
+                <div class="shop-product-title">Canvas Tote Bag</div>
+                <div class="shop-product-desc">Reusable, sturdy tote bag for groceries, books, and everyday essentials.</div>
+                <div class="shop-product-price">$15</div>
+                <button class="quick-view-btn" data-title="Canvas Tote Bag" data-desc="Reusable, sturdy tote bag for groceries, books, and everyday essentials." data-price="$15" data-img="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80">Quick View</button>
+            </div>
+        </div>
+    </section>
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close">&times;</button>
+            <img src="" alt="Product" id="modalImg" style="width:120px;height:120px;border-radius:12px;margin-bottom:1rem;" />
+            <div id="modalTitle" style="font-size:1.2rem;font-weight:bold;color:#21b573;margin-bottom:0.5rem;"></div>
+            <div id="modalDesc" style="font-size:1rem;color:#1a2238;margin-bottom:1.2rem;"></div>
+            <div id="modalPrice" style="font-size:1.1rem;color:#ffe066;font-weight:bold;"></div>
+        </div>
+    </div>
+    <script>
+    // Mobile Nav Toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.shop-nav-links');
+    navToggle.addEventListener('click', () => {
+        navList.classList.toggle('open');
+    });
+    // Product Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.shop-product-card');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            productCards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    // Quick View Modal
+    const modal = document.getElementById('quickViewModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    document.querySelectorAll('.quick-view-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            modalImg.src = btn.dataset.img;
+            modalTitle.textContent = btn.dataset.title;
+            modalDesc.textContent = btn.dataset.desc;
+            modalPrice.textContent = btn.dataset.price;
+            modal.style.display = 'flex';
+        });
+    });
+    document.querySelector('.close-modal').onclick = () => {
+        modal.style.display = 'none';
+    };
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+    </script>
+</body>
+</html> 
