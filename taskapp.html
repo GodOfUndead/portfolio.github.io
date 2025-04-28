@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App | E-Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-blue: #1a2238;
+            --emerald: #21b573;
+            --gold: #ffe066;
+            --light-bg: #f5f7fa;
+            --card-bg: #232946;
+            --text-main: #f5f7fa;
+            --shadow: 0 4px 24px rgba(26,34,56,0.12);
+        }
+        body {
+            background: var(--light-bg);
+            color: var(--deep-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .task-navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #1a2238 60%, #21b573 100%);
+            box-shadow: 0 2px 12px rgba(26,34,56,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+        }
+        .task-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 2vw;
+        }
+        .task-logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+        .task-nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        .task-nav-links li {
+            display: flex;
+        }
+        .task-nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.4rem 1.1rem;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .task-nav-link.active, .task-nav-link:hover {
+            background: linear-gradient(90deg, #ffe066 60%, #21b573 100%);
+            color: #1a2238;
+            box-shadow: 0 2px 8px #ffe06644;
+        }
+        .task-hero {
+            background: linear-gradient(120deg, #1a2238 60%, #21b573 100%);
+            color: var(--text-main);
+            padding: 6rem 0 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .task-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .task-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0e6f7;
+        }
+        .task-app-section {
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
+            padding: 2rem 2vw 3rem 2vw;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(26,34,56,0.10);
+        }
+        .task-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .task-controls input[type="text"] {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f5f7fa;
+            color: #1a2238;
+        }
+        .add-task-btn {
+            background: linear-gradient(90deg, #21b573, #ffe066);
+            color: #1a2238;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .add-task-btn:hover {
+            background: #ffe066;
+            color: #21b573;
+        }
+        .task-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .filter-btn {
+            padding: 0.4rem 1.1rem;
+            border: none;
+            background: var(--card-bg);
+            color: var(--gold);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .filter-btn.active {
+            background: linear-gradient(90deg, #ffe066, #21b573);
+            color: #1a2238;
+        }
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f5f7fa;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(33,181,115,0.08);
+            transition: background 0.2s;
+        }
+        .task-item.completed {
+            background: #e0f7ef;
+            text-decoration: line-through;
+            color: #21b573;
+        }
+        .task-title {
+            flex: 1;
+            font-size: 1.1rem;
+            margin-right: 1rem;
+        }
+        .task-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .task-btn {
+            background: none;
+            border: none;
+            color: #21b573;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 0.3rem 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .task-btn:hover {
+            background: #e0f7ef;
+            color: #1a2238;
+        }
+        @media (max-width: 700px) {
+            .task-app-section {
+                padding: 1rem 1vw 2rem 1vw;
+            }
+            .task-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="task-navbar">
+        <nav class="task-nav-container">
+            <div class="task-logo">TaskApp</div>
+            <ul class="task-nav-links">
+                <li><a href="index.html" class="task-nav-link">Home</a></li>
+                <li><a href="#" class="task-nav-link active">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="task-hero">
+        <h1>Task Management App</h1>
+        <p>Organize your work and life. Add, complete, and manage your tasks with ease!</p>
+    </section>
+    <section class="task-app-section">
+        <form class="task-controls" id="taskForm" autocomplete="off">
+            <input type="text" id="taskInput" placeholder="Add a new task..." required />
+            <button type="submit" class="add-task-btn"><i class="fas fa-plus"></i> Add</button>
+        </form>
+        <div class="task-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        <ul class="task-list" id="taskList"></ul>
+    </section>
+    <script>
+    // Task List State
+    let tasks = [];
+    let filter = 'all';
+    // DOM Elements
+    const taskForm = document.getElementById('taskForm');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    // Add Task
+    taskForm.onsubmit = e => {
+        e.preventDefault();
+        const title = taskInput.value.trim();
+        if (title) {
+            tasks.push({ title, completed: false });
+            taskInput.value = '';
+            renderTasks();
+        }
+    };
+    // Render Tasks
+    function renderTasks() {
+        taskList.innerHTML = '';
+        let filtered = tasks;
+        if (filter === 'active') filtered = tasks.filter(t => !t.completed);
+        if (filter === 'completed') filtered = tasks.filter(t => t.completed);
+        filtered.forEach((task, idx) => {
+            const li = document.createElement('li');
+            li.className = 'task-item' + (task.completed ? ' completed' : '');
+            li.innerHTML = `
+                <span class="task-title">${task.title}</span>
+                <div class="task-actions">
+                    <button class="task-btn" title="Complete" onclick="toggleComplete(${idx})"><i class="fas fa-check"></i></button>
+                    <button class="task-btn" title="Edit" onclick="editTask(${idx})"><i class="fas fa-edit"></i></button>
+                    <button class="task-btn" title="Delete" onclick="deleteTask(${idx})"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+            taskList.appendChild(li);
+        });
+    }
+    // Task Actions
+    window.toggleComplete = idx => {
+        tasks[idx].completed = !tasks[idx].completed;
+        renderTasks();
+    };
+    window.deleteTask = idx => {
+        tasks.splice(idx, 1);
+        renderTasks();
+    };
+    window.editTask = idx => {
+        const newTitle = prompt('Edit task:', tasks[idx].title);
+        if (newTitle !== null && newTitle.trim() !== '') {
+            tasks[idx].title = newTitle.trim();
+            renderTasks();
+        }
+    };
+    // Filter Buttons
+    filterBtns.forEach(btn => {
+        btn.onclick = () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filter = btn.dataset.filter;
+            renderTasks();
+        };
+    });
+    // Initial Render
+    renderTasks();
+    </script>
+</body>
+</html> 
