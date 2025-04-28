@@ -322,9 +322,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            align-items: stretch;
         }
 
         .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
             background: var(--card-background);
             border-radius: 10px;
             overflow: hidden;
@@ -345,7 +350,12 @@
         }
 
         .project-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
             padding: 1.5rem;
+            padding-bottom: 6rem;
+            position: relative;
         }
 
         .project-title {
@@ -371,6 +381,16 @@
             border-radius: 15px;
             font-size: 0.9rem;
             font-weight: bold;
+        }
+
+        .project-info .btn {
+            margin-top: 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Contact Section */
@@ -710,7 +730,7 @@
                             <span class="tag">Node.js</span>
                             <span class="tag">MongoDB</span>
                         </div>
-                        <a href="ecommerce.html" class="btn" style="margin-top:1rem;display:inline-block;">View Project</a>
+                        <a href="ecommerce.html" class="btn">View Project</a>
                     </div>
                 </div>
 
@@ -724,6 +744,7 @@
                             <span class="tag">Firebase</span>
                             <span class="tag">CSS3</span>
                         </div>
+                        <a href="taskapp.html" class="btn">View Project</a>
                     </div>
                 </div>
 
