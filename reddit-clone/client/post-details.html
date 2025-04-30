@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details - Redditly</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/enhanced-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="Redditly" class="animate__animated animate__fadeIn">
+                    <span class="animate__animated animate__fadeIn animate__delay-1s">redditly</span>
+                </a>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="index.html" class="dropdown-item">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Popular</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-arrow-trend-up"></i>
+                        <span>All</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search Redditly">
+        </div>
+        
+        <div class="navbar-right">
+            <div class="actions">
+                <button class="action-button" title="Premium">
+                    <i class="fas fa-wallet"></i>
+                </button>
+                <button class="action-button" title="Shields">
+                    <i class="fas fa-shield"></i>
+                </button>
+                <button class="action-button" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button class="action-button" title="Create Post">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            
+            <button class="auth-button sign-up">Sign Up</button>
+            <button class="auth-button login">Log In</button>
+            
+            <div class="user-menu">
+                <button class="user-menu-button">
+                    <i class="fas fa-user"></i>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="user-dropdown-content">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                    <a href="saved.html" class="dropdown-item">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Saved</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h2 class="sidebar-heading">FEEDS</h2>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menu-item active">
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Popular</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#">
+                            <i class="fas fa-arrow-trend-up"></i>
+                            <span>All</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h2 class="sidebar-heading">COMMUNITIES</h2>
+                <ul class="sidebar-menu" id="communities-list">
+                    <!-- Communities will be loaded dynamically -->
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content">
+            <!-- Post container -->
+            <div class="post-container">
+                <!-- Post content will be loaded dynamically -->
+            </div>
+            
+            <!-- Comments section -->
+            <div class="comments-section">
+                <div class="comments-header">
+                    <h3><span id="comments-count">0</span> Comments</h3>
+                    <div class="sort-dropdown">
+                        <button class="sort-dropdown-button">
+                            <i class="fas fa-sort"></i>
+                            Sort By: <span>Top</span>
+                        </button>
+                        <div class="sort-dropdown-content">
+                            <a href="#" data-sort="top">Top</a>
+                            <a href="#" data-sort="new">New</a>
+                            <a href="#" data-sort="old">Old</a>
+                            <a href="#" data-sort="controversial">Controversial</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment-form">
+                    <textarea id="comment-input" placeholder="What are your thoughts?"></textarea>
+                    <div class="comment-form-actions">
+                        <button id="comment-submit" class="comment-submit">Comment</button>
+                    </div>
+                </div>
+                
+                <div class="comments-list">
+                    <!-- Comments will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <aside class="trending-sidebar">
+            <div class="sidebar-card">
+                <h2 class="sidebar-card-heading">About Community</h2>
+                <p class="sidebar-card-text" id="community-description">
+                    Loading community description...
+                </p>
+                <div class="sidebar-card-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="community-members">-</span>
+                        <span class="stat-label">Members</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="community-online">-</span>
+                        <span class="stat-label">Online</span>
+                    </div>
+                </div>
+                <div class="sidebar-card-footer">
+                    <button class="sidebar-button" id="create-post-button">Create Post</button>
+                </div>
+            </div>
+            
+            <div class="sidebar-card">
+                <h2 class="sidebar-card-heading">Related Communities</h2>
+                <ul class="trending-list" id="related-communities">
+                    <!-- Related communities will be loaded dynamically -->
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Log In</h2>
+            <form class="auth-form" id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="auth-submit-button">Log In</button>
+                <p class="auth-footer">New to Redditly? <a href="#" id="switch-to-signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Sign Up</h2>
+            <form class="auth-form" id="signup-form">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <button type="submit" class="auth-submit-button">Sign Up</button>
+                <p class="auth-footer">Already have an account? <a href="#" id="switch-to-login">Log In</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to Portfolio Button -->
+    <a href="../../index.html" class="back-to-portfolio">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Dark Mode Toggle -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <!-- Add script for dark mode toggle -->
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('redditly_dark_mode', 'true');
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('redditly_dark_mode', 'false');
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.className = 'notification show';
+            notification.textContent = document.body.classList.contains('dark-mode') ? 
+                'Dark mode enabled' : 'Light mode enabled';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 2000);
+        });
+        
+        // Check preference on load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('redditly_dark_mode') === 'true') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('dark-mode-toggle').innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+    </script>
+
+    <script src="js/app.js"></script>
+    <script src="js/enhanced-features.js"></script>
+    <script src="js/post-details.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    
+    <script src="js/firebase-config.js"></script>
+</body>
+</html> 
