@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Login / Register Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Login</div>
+                    <div class="auth-tab" data-tab="register">Register</div>
+                </div>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <div class="form-footer">
+                        <p>Need an account? <a href="#" id="switch-to-register">Register</a></p>
+                    </div>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-username">Username</label>
+                        <input type="text" id="register-username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <input type="password" id="register-confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="app-container">
+        <!-- Server List Sidebar -->
+        <div class="servers-sidebar">
+            <div class="server-icon home-icon active">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="server-divider"></div>
+            
+            <!-- User Servers List -->
+            <div id="user-servers">
+                <!-- Servers will be dynamically added here -->
+            </div>
+            
+            <div class="server-icon add-server" id="add-server-btn">
+                <i class="fas fa-plus"></i>
+            </div>
+            
+            <div class="server-icon server-discovery">
+                <i class="fas fa-compass"></i>
+            </div>
+        </div>
+
+        <!-- Channels Sidebar -->
+        <div class="channels-sidebar">
+            <div class="server-header">
+                <h3 id="current-server-name">Home</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            
+            <div class="channels-container">
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-down"></i>
+                        <h4>TEXT CHANNELS</h4>
+                    </div>
+                    <div class="channel-list" id="text-channels">
+                        <!-- Text Channels will be added here -->
+                        <div class="channel active">
+                            <i class="fas fa-hashtag"></i>
+                            <span>general</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-down"></i>
+                        <h4>VOICE CHANNELS</h4>
+                    </div>
+                    <div class="channel-list" id="voice-channels">
+                        <!-- Voice Channels will be added here -->
+                        <div class="channel">
+                            <i class="fas fa-volume-up"></i>
+                            <span>General</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-controls">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="assets/default-avatar.png" alt="User Avatar" id="user-avatar">
+                    </div>
+                    <div class="user-details">
+                        <h4 id="username">Username</h4>
+                        <span id="user-id">#0000</span>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <i class="fas fa-microphone"></i>
+                    <i class="fas fa-headphones"></i>
+                    <i class="fas fa-cog" id="settings-button"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-left">
+                    <i class="fas fa-hashtag"></i>
+                    <h3 id="current-channel">general</h3>
+                </div>
+                <div class="chat-header-right">
+                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-thumbtack"></i>
+                    <i class="fas fa-user-friends"></i>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <i class="fas fa-inbox"></i>
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here -->
+            </div>
+            
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <button class="upload-button">
+                        <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <input type="text" id="message-input" placeholder="Message #general">
+                    <div class="message-actions">
+                        <i class="fas fa-gift"></i>
+                        <i class="fas fa-file-image"></i>
+                        <i class="fas fa-smile"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Members Sidebar -->
+        <div class="members-sidebar">
+            <div class="members-group">
+                <h4>ONLINE — <span id="online-count">1</span></h4>
+                <div class="member-list" id="online-members">
+                    <!-- Online Members will be added here -->
+                </div>
+            </div>
+            
+            <div class="members-group">
+                <h4>OFFLINE — <span id="offline-count">0</span></h4>
+                <div class="member-list" id="offline-members">
+                    <!-- Offline Members will be added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Server Modal -->
+    <div id="add-server-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create a Server</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="server-avatar-picker">
+                    <div class="server-avatar-preview">
+                        <img src="assets/default-server.png" alt="Server Avatar" id="server-avatar-preview">
+                        <div class="upload-overlay">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <input type="file" id="server-avatar-upload" style="display: none;">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="server-name">SERVER NAME</label>
+                    <input type="text" id="server-name" placeholder="Enter server name">
+                </div>
+                
+                <div class="server-guidelines">
+                    <p>By creating a server, you agree to Discord's Community Guidelines.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button id="cancel-server" class="btn btn-secondary">Cancel</button>
+                    <button id="create-server" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Server Modal -->
+    <div id="join-server-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Join a Server</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="server-invite-code">INVITE CODE</label>
+                    <input type="text" id="server-invite-code" placeholder="Enter an invite code">
+                </div>
+                
+                <div class="modal-actions">
+                    <button id="cancel-join" class="btn btn-secondary">Cancel</button>
+                    <button id="join-server" class="btn btn-primary">Join Server</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content settings-content">
+            <div class="settings-sidebar">
+                <div class="settings-sections">
+                    <div class="settings-section active" data-section="account">
+                        My Account
+                    </div>
+                    <div class="settings-section" data-section="profile">
+                        User Profile
+                    </div>
+                    <div class="settings-section" data-section="privacy">
+                        Privacy & Safety
+                    </div>
+                    
+                    <div class="settings-divider"></div>
+                    
+                    <div class="settings-section" data-section="appearance">
+                        Appearance
+                    </div>
+                    <div class="settings-section" data-section="accessibility">
+                        Accessibility
+                    </div>
+                    
+                    <div class="settings-divider"></div>
+                    
+                    <div class="settings-section logout-btn">
+                        Log Out
+                    </div>
+                </div>
+            </div>
+            
+            <div class="settings-main">
+                <div class="settings-header">
+                    <h2>My Account</h2>
+                    <div class="close">&times;</div>
+                </div>
+                
+                <div class="settings-content-section">
+                    <div class="account-profile">
+                        <div class="profile-banner"></div>
+                        <div class="profile-info">
+                            <div class="profile-avatar">
+                                <img src="assets/default-avatar.png" alt="User Avatar" id="settings-avatar">
+                                <div class="avatar-upload-overlay">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <input type="file" id="avatar-upload" style="display: none;">
+                            </div>
+                            <div class="profile-username" id="settings-username">Username</div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label for="settings-email">EMAIL</label>
+                            <input type="email" id="settings-email" value="user@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="settings-current-password">CURRENT PASSWORD</label>
+                            <input type="password" id="settings-current-password" placeholder="Enter current password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="settings-new-password">NEW PASSWORD</label>
+                            <input type="password" id="settings-new-password" placeholder="Enter new password">
+                        </div>
+                        
+                        <button class="btn btn-primary" id="save-settings">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/friends.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/servers.js"></script>
+    <script src="js/ui.js"></script>
+    
+    <!-- Back to Portfolio Button -->
+    <a href="../index.html" class="back-to-portfolio">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+</body>
+</html> 

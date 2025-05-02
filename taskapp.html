@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App | E-Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --deep-blue: #1a2238;
+            --emerald: #21b573;
+            --gold: #ffe066;
+            --light-bg: #f5f7fa;
+            --card-bg: #232946;
+            --text-main: #f5f7fa;
+            --shadow: 0 4px 24px rgba(26,34,56,0.12);
+        }
+        body {
+            background: var(--light-bg);
+            color: var(--deep-blue);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .task-navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #1a2238 60%, #21b573 100%);
+            box-shadow: 0 2px 12px rgba(26,34,56,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+        }
+        .task-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 2vw;
+        }
+        .task-logo {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+        .task-nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        .task-nav-links li {
+            display: flex;
+        }
+        .task-nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.4rem 1.1rem;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .task-nav-link.active, .task-nav-link:hover {
+            background: linear-gradient(90deg, #ffe066 60%, #21b573 100%);
+            color: #1a2238;
+            box-shadow: 0 2px 8px #ffe06644;
+        }
+        .task-hero {
+            background: linear-gradient(120deg, #1a2238 60%, #21b573 100%);
+            color: var(--text-main);
+            padding: 6rem 0 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .task-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .task-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #e0e6f7;
+        }
+        .task-app-section {
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
+            padding: 2rem 2vw 3rem 2vw;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(26,34,56,0.10);
+        }
+        .task-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .task-controls input[type="text"] {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f5f7fa;
+            color: #1a2238;
+        }
+        .add-task-btn {
+            background: linear-gradient(90deg, #21b573, #ffe066);
+            color: #1a2238;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .add-task-btn:hover {
+            background: #ffe066;
+            color: #21b573;
+        }
+        .task-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .filter-btn {
+            padding: 0.4rem 1.1rem;
+            border: none;
+            background: var(--card-bg);
+            color: var(--gold);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .filter-btn.active {
+            background: linear-gradient(90deg, #ffe066, #21b573);
+            color: #1a2238;
+        }
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f5f7fa;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(33,181,115,0.08);
+            transition: background 0.2s;
+        }
+        .task-item.completed {
+            background: #e0f7ef;
+            text-decoration: line-through;
+            color: #21b573;
+        }
+        .task-title {
+            flex: 1;
+            font-size: 1.1rem;
+            margin-right: 1rem;
+        }
+        .task-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .task-btn {
+            background: none;
+            border: none;
+            color: #21b573;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 0.3rem 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .task-btn:hover {
+            background: #e0f7ef;
+            color: #1a2238;
+        }
+        @media (max-width: 700px) {
+            .task-app-section {
+                padding: 1rem 1vw 2rem 1vw;
+            }
+            .task-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="task-navbar">
+        <nav class="task-nav-container">
+            <div class="task-logo">TaskApp</div>
+            <ul class="task-nav-links">
+                <li><a href="index.html" class="task-nav-link">Home</a></li>
+                <li><a href="#" class="task-nav-link active">Tasks</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="task-hero">
+        <h1>Task Management App</h1>
+        <p>Organize your work and life. Add, complete, and manage your tasks with ease!</p>
+    </section>
+    <!-- Landing Page -->
+    <section id="landingSection" style="max-width:600px;margin:6rem auto 1.5rem auto;padding:2.5rem 2vw 2.5rem 2vw;background:#fff;border-radius:18px;box-shadow:0 4px 24px 0 rgba(26,34,56,0.10);display:flex;flex-direction:column;align-items:center;gap:2rem;">
+        <h2 style="color:#1a2238;">Welcome to TaskApp</h2>
+        <button id="landingCreateBtn" class="add-task-btn" style="width:200px;">Create Room</button>
+        <div style="display:flex;gap:0.5rem;width:100%;justify-content:center;align-items:center;">
+            <input type="text" id="landingJoinInput" placeholder="Enter Room Code" style="flex:1;padding:0.7rem 1rem;border:1px solid #ddd;border-radius:8px;font-size:1rem;background:#f5f7fa;color:#1a2238;max-width:180px;">
+            <button id="landingJoinBtn" class="add-task-btn">Join Room</button>
+        </div>
+    </section>
+
+    <!-- Room Page (hidden by default) -->
+    <section id="roomSection" style="display:none;max-width:600px;margin:6rem auto 1.5rem auto;padding:1.5rem 2vw 1.5rem 2vw;background:#fff;border-radius:18px;box-shadow:0 4px 24px 0 rgba(26,34,56,0.10);">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div id="currentRoomDisplay" style="color:#21b573;font-weight:bold;">Room: <span id="roomCodeSpan"></span></div>
+            <button id="closeRoomBtn" class="add-task-btn" style="background:#e74c3c;color:#fff;">Close Room</button>
+        </div>
+        <section class="task-app-section" style="margin-top:1.5rem;">
+            <form class="task-controls" id="taskForm" autocomplete="off">
+                <input type="text" id="taskInput" placeholder="Add a new task..." required />
+                <button type="submit" class="add-task-btn"><i class="fas fa-plus"></i> Add</button>
+            </form>
+            <div class="task-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <ul class="task-list" id="taskList"></ul>
+        </section>
+    </section>
+    <!-- Notification Area -->
+    <div id="notificationArea" style="position:fixed;top:80px;right:30px;z-index:9999;"></div>
+    <!-- User List Area (in room) -->
+    <div id="userListArea" style="display:none;max-width:600px;margin:0 auto 1rem auto;padding:0.5rem 2vw;background:#e0f7ef;border-radius:10px;color:#1a2238;font-weight:bold;"></div>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <!-- Add Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script>
+    // --- Firebase Config ---
+    const firebaseConfig = {
+        apiKey: "AIzaSyC2KFIqzWKpisX5GNlwgqiw6Dc12sh3NLA",
+        authDomain: "portfolioweb-7f233.firebaseapp.com",
+        projectId: "portfolioweb-7f233",
+        storageBucket: "portfolioweb-7f233.firebasestorage.app",
+        messagingSenderId: "100497470229",
+        appId: "1:100497470229:web:e87e15f4c00b37cd23ef1c",
+        measurementId: "G-CZZD83F4Y6"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // --- State ---
+    let tasks = [];
+    let filter = 'all';
+    let currentRoom = localStorage.getItem('currentRoom') || '';
+    let userName = localStorage.getItem('userName') || '';
+    let unsubscribeTasks = null;
+    let unsubscribeUsers = null;
+
+    // --- DOM Elements ---
+    const landingSection = document.getElementById('landingSection');
+    const landingCreateBtn = document.getElementById('landingCreateBtn');
+    const landingJoinInput = document.getElementById('landingJoinInput');
+    const landingJoinBtn = document.getElementById('landingJoinBtn');
+    const roomSection = document.getElementById('roomSection');
+    const closeRoomBtn = document.getElementById('closeRoomBtn');
+    const currentRoomDisplay = document.getElementById('currentRoomDisplay');
+    const roomCodeSpan = document.getElementById('roomCodeSpan');
+    const taskForm = document.getElementById('taskForm');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const notificationArea = document.getElementById('notificationArea');
+    const userListArea = document.getElementById('userListArea');
+
+    // --- UI State Management ---
+    function showLanding() {
+        landingSection.style.display = 'flex';
+        roomSection.style.display = 'none';
+        userListArea.style.display = 'none';
+        localStorage.removeItem('currentRoom');
+        currentRoom = '';
+        if (unsubscribeTasks) unsubscribeTasks();
+        if (unsubscribeUsers) unsubscribeUsers();
+    }
+    function showRoom(roomCode) {
+        landingSection.style.display = 'none';
+        roomSection.style.display = 'block';
+        userListArea.style.display = 'block';
+        currentRoom = roomCode;
+        localStorage.setItem('currentRoom', currentRoom);
+        roomCodeSpan.textContent = currentRoom;
+        listenToTasks();
+        listenToUsers();
+    }
+
+    // --- User Name Prompt ---
+    function askUserName() {
+        let name = '';
+        while (!name || name.trim().length < 2) {
+            name = prompt('Enter your name (for this session):');
+            if (name === null) return null;
+        }
+        name = name.trim();
+        localStorage.setItem('userName', name);
+        userName = name;
+        return name;
+    }
+
+    // --- Firestore: Tasks ---
+    function listenToTasks() {
+        if (unsubscribeTasks) unsubscribeTasks();
+        unsubscribeTasks = db.collection('rooms').doc(currentRoom).collection('tasks')
+            .orderBy('timestamp')
+            .onSnapshot(snapshot => {
+                tasks = [];
+                snapshot.forEach(doc => {
+                    const t = doc.data();
+                    t.id = doc.id;
+                    tasks.push(t);
+                });
+                renderTasks();
+            });
+    }
+    function addTask(title) {
+        db.collection('rooms').doc(currentRoom).collection('tasks').add({
+            title,
+            completed: false,
+            createdBy: userName,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).then(() => {
+            showNotification(`${userName} added a task.`);
+        });
+    }
+    function updateTask(id, data, actionMsg) {
+        db.collection('rooms').doc(currentRoom).collection('tasks').doc(id).update(data).then(() => {
+            if (actionMsg) showNotification(`${userName} ${actionMsg}`);
+        });
+    }
+    function deleteTaskFirestore(id) {
+        db.collection('rooms').doc(currentRoom).collection('tasks').doc(id).delete().then(() => {
+            showNotification(`${userName} deleted a task.`);
+        });
+    }
+
+    // --- Firestore: Users (Presence) ---
+    function listenToUsers() {
+        if (unsubscribeUsers) unsubscribeUsers();
+        unsubscribeUsers = db.collection('rooms').doc(currentRoom).collection('users')
+            .onSnapshot(snapshot => {
+                const users = [];
+                snapshot.forEach(doc => users.push(doc.id));
+                renderUserList(users);
+            });
+        // Add self to users
+        db.collection('rooms').doc(currentRoom).collection('users').doc(userName).set({
+            joined: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        // Remove self on unload
+        window.addEventListener('beforeunload', () => {
+            db.collection('rooms').doc(currentRoom).collection('users').doc(userName).delete();
+        });
+    }
+    function renderUserList(users) {
+        userListArea.innerHTML = 'Users in room: ' + users.map(u => `<span style="margin-right:8px;">👤 ${u}</span>`).join(' ');
+    }
+
+    // --- Notifications ---
+    function showNotification(msg) {
+        const div = document.createElement('div');
+        div.textContent = msg;
+        div.style.background = '#ffe066';
+        div.style.color = '#1a2238';
+        div.style.padding = '0.7rem 1.2rem';
+        div.style.marginBottom = '0.5rem';
+        div.style.borderRadius = '8px';
+        div.style.boxShadow = '0 2px 8px #ffe06644';
+        notificationArea.appendChild(div);
+        setTimeout(() => div.remove(), 3500);
+    }
+
+    // --- Landing Page Events ---
+    landingCreateBtn.onclick = async () => {
+        let name = userName || askUserName();
+        if (!name) return;
+        // Generate a random 6-character code
+        const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+        // Create room doc
+        await db.collection('rooms').doc(code).set({ created: firebase.firestore.FieldValue.serverTimestamp() });
+        showRoom(code);
+        showNotification('Room created! Share this code: ' + code);
+    };
+    landingJoinBtn.onclick = async () => {
+        let name = userName || askUserName();
+        if (!name) return;
+        const code = landingJoinInput.value.trim().toUpperCase();
+        if (code.length < 4) {
+            alert('Please enter a valid room code.');
+            return;
+        }
+        // Check if room exists
+        const roomDoc = await db.collection('rooms').doc(code).get();
+        if (!roomDoc.exists) {
+            alert('Room code not found. Please check the code or ask your team to create the room first.');
+            return;
+        }
+        showRoom(code);
+        showNotification('Joined room: ' + code);
+    };
+
+    // --- Close Room ---
+    closeRoomBtn.onclick = async () => {
+        if (confirm('Are you sure you want to close this room? All tasks and users will be deleted.')) {
+            // Delete all tasks and users in the room
+            const tasksSnap = await db.collection('rooms').doc(currentRoom).collection('tasks').get();
+            const usersSnap = await db.collection('rooms').doc(currentRoom).collection('users').get();
+            const batch = db.batch();
+            tasksSnap.forEach(doc => batch.delete(doc.ref));
+            usersSnap.forEach(doc => batch.delete(doc.ref));
+            batch.delete(db.collection('rooms').doc(currentRoom));
+            await batch.commit();
+            showLanding();
+            showNotification('Room closed and all data deleted.');
+        }
+    };
+
+    // --- Task Actions (Firestore) ---
+    taskForm.onsubmit = e => {
+        e.preventDefault();
+        if (!currentRoom) {
+            alert('Please create or join a room first!');
+            return;
+        }
+        const title = taskInput.value.trim();
+        if (title) {
+            addTask(title);
+            taskInput.value = '';
+        }
+    };
+    function renderTasks() {
+        taskList.innerHTML = '';
+        if (!currentRoom) {
+            taskList.innerHTML = '<li style="color:#888;text-align:center;">Create or join a room to manage tasks.</li>';
+            return;
+        }
+        let filtered = tasks;
+        if (filter === 'active') filtered = tasks.filter(t => !t.completed);
+        if (filter === 'completed') filtered = tasks.filter(t => t.completed);
+        filtered.forEach((task, idx) => {
+            const li = document.createElement('li');
+            li.className = 'task-item' + (task.completed ? ' completed' : '');
+            li.innerHTML = `
+                <span class="task-title">${task.title} <span style='font-size:0.9em;color:#888;'>(${task.createdBy || 'Unknown'})</span></span>
+                <div class="task-actions">
+                    <button class="task-btn" title="Complete" onclick="toggleComplete('${task.id}')"><i class="fas fa-check"></i></button>
+                    <button class="task-btn" title="Edit" onclick="editTask('${task.id}')"><i class="fas fa-edit"></i></button>
+                    <button class="task-btn" title="Delete" onclick="deleteTask('${task.id}')"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+            taskList.appendChild(li);
+        });
+    }
+    window.toggleComplete = id => {
+        if (!currentRoom) return;
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        updateTask(id, { completed: !task.completed }, 'toggled a task');
+    };
+    window.deleteTask = id => {
+        if (!currentRoom) return;
+        deleteTaskFirestore(id);
+    };
+    window.editTask = id => {
+        if (!currentRoom) return;
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        const newTitle = prompt('Edit task:', task.title);
+        if (newTitle !== null && newTitle.trim() !== '') {
+            updateTask(id, { title: newTitle.trim() }, 'edited a task');
+        }
+    };
+    // Filter Buttons
+    filterBtns.forEach(btn => {
+        btn.onclick = () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filter = btn.dataset.filter;
+            renderTasks();
+        };
+    });
+
+    // --- Initial State ---
+    if (currentRoom) {
+        showRoom(currentRoom);
+    } else {
+        showLanding();
+    }
+    </script>
+</body>
+</html> 

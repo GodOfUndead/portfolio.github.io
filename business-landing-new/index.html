@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusCore | Enterprise Business Intelligence Solutions</title>
+    <meta name="description" content="NexusCore offers enterprise-grade business intelligence, data analytics, and client management tools for modern businesses. Transform your data into actionable insights.">
+    <meta name="keywords" content="business intelligence, data analytics, enterprise solutions, business dashboard, client management">
+    <meta name="author" content="NexusCore">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="NexusCore | Enterprise Business Intelligence Solutions">
+    <meta property="og:description" content="Transform your data into actionable insights with our comprehensive analytics platform and business intelligence tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexuscore.com">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI1NiA1OEw0NDQgMTc0VjQwNkwyNTYgNTIyTDY4IDQwNlYxNzRMMjU2IDU4WiIgZmlsbD0iIzI1NjNlYiIvPjxwYXRoIGQ9Ik0yNTYgNThMNjggMTc0TDI1NiAyOTBMNDQ0IDE3NEwyNTYgNThaIiBmaWxsPSIjMWQ0ZWQ4Ii8+PHBhdGggZD0iTTI1NiAxNzRMMzUwIDIzMlYzNDhMMjU2IDQwNkwxNjIgMzQ4VjIzMkwyNTYgMTc0WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTI1NiA1OEw0NDQgMTc0VjQwNkwyNTYgNTIyTDY4IDQwNlYxNzRMMjU2IDU4WiIgZmlsbD0iIzI1NjNlYiIvPjxwYXRoIGQ9Ik0yNTYgNThMNjggMTc0TDI1NiAyOTBMNDQ0IDE3NEwyNTYgNThaIiBmaWxsPSIjMWQ0ZWQ4Ii8+PHBhdGggZD0iTTI1NiAxNzRMMzUwIDIzMlYzNDhMMjU2IDQwNkwxNjIgMzQ4VjIzMkwyNTYgMTc0WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom cursor elements -->
+    <div class="cursor-dot-outline"></div>
+    <div class="cursor-dot"></div>
+    
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="container header-container">
+                <a href="#" class="logo">
+                    <svg width="40" height="40" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M256 58L444 174V406L256 522L68 406V174L256 58Z" fill="#2563eb"/>
+                        <path d="M256 58L68 174L256 290L444 174L256 58Z" fill="#1d4ed8"/>
+                        <path d="M256 174L350 232V348L256 406L162 348V232L256 174Z" fill="white"/>
+                    </svg>
+                    NexusCore
+                </a>
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <div class="nav-cta">
+                        <a href="#" class="btn btn-secondary" style="margin-right: 1rem;">Login</a>
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                    </div>
+                    <div class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <div id="particles-js" class="particle-container"></div>
+                <div class="floating-elements">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                </div>
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-content">
+                            <h1 data-text="Business Intelligence for the Modern Enterprise">Business <span class="hero-accent">Intelligence</span> for the Modern Enterprise</h1>
+                            <p class="typewriter" style="visibility: hidden;">Transform your data into actionable insights with our comprehensive analytics platform and business intelligence tools.</p>
+                            <div class="hero-cta">
+                                <a href="#" class="btn btn-primary">Get Started <i class="fas fa-arrow-right btn-icon"></i></a>
+                                <a href="#" class="btn btn-secondary">Schedule a Demo</a>
+                            </div>
+                            <div class="hero-stats">
+                                <div class="stat-item">
+                                    <div class="stat-number">98<span>%</span></div>
+                                    <div class="stat-label">Customer Satisfaction</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">500<span>+</span></div>
+                                    <div class="stat-label">Enterprise Clients</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">35<span>%</span></div>
+                                    <div class="stat-label">ROI Improvement</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80" alt="Business Dashboard" class="dashboard-preview" loading="lazy" width="600" height="338">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="features section" id="features">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-subtitle">Features</div>
+                        <h2 class="section-title">Powerful Tools for Data-Driven Decisions</h2>
+                        <p class="section-description">Our comprehensive suite of business tools helps you transform complex data into clear, actionable insights.</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="feature-title">Advanced Analytics</h3>
+                            <p class="feature-description">Process and analyze vast amounts of data in real-time with our powerful analytics engine.</p>
+                            <div class="feature-progress">
+                                <div class="progress-label">Performance</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="95"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="feature-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h3 class="feature-title">Client Portal</h3>
+                            <p class="feature-description">Provide your clients with secure access to personalized dashboards and reports.</p>
+                            <div class="feature-progress">
+                                <div class="progress-label">Security</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="98"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="feature-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Real-time Updates</h3>
+                            <p class="feature-description">Stay informed with real-time data updates and notifications across all your devices.</p>
+                            <div class="feature-progress">
+                                <div class="progress-label">Speed</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="90"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="feature-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3 class="feature-title">Enterprise Security</h3>
+                            <p class="feature-description">Protect your sensitive data with our industry-leading security infrastructure.</p>
+                            <div class="feature-progress">
+                                <div class="progress-label">Protection</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="99"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="feature-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3 class="feature-title">Customizable Workflows</h3>
+                            <p class="feature-description">Design and automate workflows that align perfectly with your business processes.</p>
+                            <div class="feature-progress">
+                                <div class="progress-label">Efficiency</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="92"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="feature-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3 class="feature-title">AI-Powered Insights</h3>
+                            <p class="feature-description">Leverage machine learning algorithms to uncover hidden patterns in your data.</p>
+                            <div class="feature-progress">
+                                <div class="progress-label">Intelligence</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="96"></div>
+                                </div>
+                            </div>
+                            <a href="#" class="feature-link">Learn More <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="dashboard-showcase" id="solutions">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-subtitle">Our Platform</div>
+                        <h2 class="section-title">Comprehensive Analytics Dashboard</h2>
+                        <p class="section-description">Experience the power of our intuitive analytics platform designed for maximum clarity and insight.</p>
+                    </div>
+                    
+                    <div class="dashboard-content">
+                        <div class="dashboard-tabs" id="dashboardTabs" role="tablist" aria-label="Dashboard Views">
+                            <div class="tab-indicator" id="tabIndicator"></div>
+                            <button class="dashboard-tab active" data-tab="analytics" role="tab" aria-selected="true" aria-controls="analyticsPanel" id="analyticsTab" tabindex="0">Analytics</button>
+                            <button class="dashboard-tab" data-tab="reporting" role="tab" aria-selected="false" aria-controls="reportingPanel" id="reportingTab" tabindex="-1">Reporting</button>
+                            <button class="dashboard-tab" data-tab="clients" role="tab" aria-selected="false" aria-controls="clientsPanel" id="clientsTab" tabindex="-1">Client Portal</button>
+                            <button class="dashboard-tab" data-tab="insights" role="tab" aria-selected="false" aria-controls="insightsPanel" id="insightsTab" tabindex="-1">AI Insights</button>
+                        </div>
+                        
+                        <div class="dashboard-screens">
+                            <div role="tabpanel" id="analyticsPanel" aria-labelledby="analyticsTab" class="dashboard-screen-container active">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80" alt="Analytics Dashboard" class="dashboard-screen active" data-screen="analytics" loading="lazy" width="1000" height="563">
+                            </div>
+                            <div role="tabpanel" id="reportingPanel" aria-labelledby="reportingTab" class="dashboard-screen-container">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80" alt="Reporting Dashboard" class="dashboard-screen" data-screen="reporting" loading="lazy" width="1000" height="563">
+                            </div>
+                            <div role="tabpanel" id="clientsPanel" aria-labelledby="clientsTab" class="dashboard-screen-container">
+                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=80" alt="Client Portal" class="dashboard-screen" data-screen="clients" loading="lazy" width="1000" height="563">
+                            </div>
+                            <div role="tabpanel" id="insightsPanel" aria-labelledby="insightsTab" class="dashboard-screen-container">
+                                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&auto=format&fit=crop&q=80" alt="AI Insights" class="dashboard-screen" data-screen="insights" loading="lazy" width="1000" height="563">
+                            </div>
+                        </div>
+                        
+                        <div class="dashboard-features">
+                            <div class="dashboard-feature">
+                                <div class="feature-number">1</div>
+                                <h4>Interactive Charts</h4>
+                                <p>Explore your data through interactive visualizations that reveal hidden patterns.</p>
+                            </div>
+                            
+                            <div class="dashboard-feature">
+                                <div class="feature-number">2</div>
+                                <h4>Custom Reports</h4>
+                                <p>Create tailored reports that focus on your most important metrics.</p>
+                            </div>
+                            
+                            <div class="dashboard-feature">
+                                <div class="feature-number">3</div>
+                                <h4>Real-time Updates</h4>
+                                <p>Get instant insights with continuous data updates and alerts.</p>
+                            </div>
+                            
+                            <div class="dashboard-feature">
+                                <div class="feature-number">4</div>
+                                <h4>Data Export</h4>
+                                <p>Export your data in multiple formats for further analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="pricing section" id="pricing">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-subtitle">Pricing</div>
+                        <h2 class="section-title">Choose the Perfect Plan for Your Business</h2>
+                        <p class="section-description">Flexible pricing options designed to meet the needs of businesses of all sizes. Start with a 14-day free trial.</p>
+                    </div>
+                    
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3>Starter</h3>
+                                <div class="pricing-price">
+                                    <span class="price">$49</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p class="pricing-description">Perfect for small businesses and startups.</p>
+                            </div>
+                            <div class="pricing-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Basic analytics dashboard</li>
+                                    <li><i class="fas fa-check"></i> Up to 5 user accounts</li>
+                                    <li><i class="fas fa-check"></i> 100GB data storage</li>
+                                    <li><i class="fas fa-check"></i> Weekly reports</li>
+                                    <li><i class="fas fa-check"></i> Email support</li>
+                                </ul>
+                            </div>
+                            <div class="pricing-cta">
+                                <a href="#" class="btn btn-secondary">Start Free Trial</a>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card featured">
+                            <div class="pricing-badge">Popular</div>
+                            <div class="pricing-header">
+                                <h3>Professional</h3>
+                                <div class="pricing-price">
+                                    <span class="price">$99</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p class="pricing-description">Ideal for growing businesses and teams.</p>
+                            </div>
+                            <div class="pricing-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
+                                    <li><i class="fas fa-check"></i> Up to 20 user accounts</li>
+                                    <li><i class="fas fa-check"></i> 500GB data storage</li>
+                                    <li><i class="fas fa-check"></i> Daily reports</li>
+                                    <li><i class="fas fa-check"></i> Priority email & chat support</li>
+                                    <li><i class="fas fa-check"></i> Custom report builder</li>
+                                </ul>
+                            </div>
+                            <div class="pricing-cta">
+                                <a href="#" class="btn btn-primary">Start Free Trial</a>
+                            </div>
+                        </div>
+                        
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3>Enterprise</h3>
+                                <div class="pricing-price">
+                                    <span class="price">$249</span>
+                                    <span class="period">/month</span>
+                                </div>
+                                <p class="pricing-description">For large businesses with advanced needs.</p>
+                            </div>
+                            <div class="pricing-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Premium analytics dashboard</li>
+                                    <li><i class="fas fa-check"></i> Unlimited user accounts</li>
+                                    <li><i class="fas fa-check"></i> 2TB data storage</li>
+                                    <li><i class="fas fa-check"></i> Real-time reports</li>
+                                    <li><i class="fas fa-check"></i> 24/7 phone & priority support</li>
+                                    <li><i class="fas fa-check"></i> Custom integrations</li>
+                                    <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                                </ul>
+                            </div>
+                            <div class="pricing-cta">
+                                <a href="#" class="btn btn-secondary">Contact Sales</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="testimonials section" id="testimonials">
+                <div class="testimonial-pattern"></div>
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-subtitle">Testimonials</div>
+                        <h2 class="section-title">What Our Clients Say</h2>
+                        <p class="section-description">Discover how NexusCore has transformed business operations for companies worldwide.</p>
+                    </div>
+                    
+                    <div class="testimonial-slider">
+                        <div class="testimonials-track" id="testimonialsTrack">
+                            <div class="testimonial-slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-content">
+                                        <p class="testimonial-text">"NexusCore's analytics platform has completely transformed how we make decisions. The insights we've gained have directly contributed to a 28% increase in operational efficiency over the past year."</p>
+                                        <div class="testimonial-author">
+                                            <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Sarah Johnson" class="author-avatar" loading="lazy" width="60" height="60">
+                                            <div class="author-info">
+                                                <h4>Sarah Johnson</h4>
+                                                <p>CTO, TechGlobal Industries</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-content">
+                                        <p class="testimonial-text">"The client portal has been a game-changer for our customer relationships. Our clients love the transparency and accessibility of their data, which has significantly improved satisfaction and retention rates."</p>
+                                        <div class="testimonial-author">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar" loading="lazy" width="60" height="60">
+                                            <div class="author-info">
+                                                <h4>Michael Chen</h4>
+                                                <p>CEO, Apex Solutions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-slide">
+                                <div class="testimonial-card">
+                                    <div class="testimonial-content">
+                                        <p class="testimonial-text">"As a financial services company, security is paramount. NexusCore's enterprise-grade security measures give us complete confidence that our sensitive data is protected to the highest standards."</p>
+                                        <div class="testimonial-author">
+                                            <img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Jennifer Patel" class="author-avatar" loading="lazy" width="60" height="60">
+                                            <div class="author-info">
+                                                <h4>Jennifer Patel</h4>
+                                                <p>Head of Security, Financial Partners</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-controls">
+                            <button class="testimonial-control" id="prevTestimonial">
+                                <i class="fas fa-arrow-left"></i>
+                            </button>
+                            <button class="testimonial-control" id="nextTestimonial">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="testimonial-dots">
+                            <div class="testimonial-dot active" data-slide="0"></div>
+                            <div class="testimonial-dot" data-slide="1"></div>
+                            <div class="testimonial-dot" data-slide="2"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>NexusCore</h3>
+                        <p>Empowering businesses with cutting-edge analytics and enterprise solutions. Transform your data into actionable insights.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Company</h3>
+                        <ul class="footer-links">
+                            <li class="footer-link"><a href="#">About Us</a></li>
+                            <li class="footer-link"><a href="#">Careers</a></li>
+                            <li class="footer-link"><a href="#">Blog</a></li>
+                            <li class="footer-link"><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Resources</h3>
+                        <ul class="footer-links">
+                            <li class="footer-link"><a href="#">Documentation</a></li>
+                            <li class="footer-link"><a href="#">Help Center</a></li>
+                            <li class="footer-link"><a href="#">API Reference</a></li>
+                            <li class="footer-link"><a href="#">Community</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Legal</h3>
+                        <ul class="footer-links">
+                            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                            <li class="footer-link"><a href="#">Terms of Service</a></li>
+                            <li class="footer-link"><a href="#">Cookie Policy</a></li>
+                            <li class="footer-link"><a href="#">Security</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2023 NexusCore. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
