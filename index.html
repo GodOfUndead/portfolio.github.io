@@ -973,7 +973,8 @@
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            column-gap: 80px;
+            row-gap: 60px;
         }
         
         /* Updated project card styles */
@@ -1003,12 +1004,12 @@
             text-align: center;
             width: 100%;
         }
-
+        
         .view-project-btn i {
             margin-left: 8px;
             transition: transform 0.3s var(--easing);
         }
-
+        
         .view-project-btn:hover {
             background-color: var(--hover-color);
             transform: translateY(-2px);
@@ -1017,7 +1018,7 @@
         .view-project-btn:hover i {
             transform: translateX(5px);
         }
-
+        
         .project-image {
             height: 180px;
             object-fit: cover;
