@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Visualizer | Interactive ML Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="neural-loader">
+                <div class="brain-container">
+                    <svg viewBox="0 0 500 500" class="brain-svg">
+                        <path class="brain-path" d="M250,50 C150,50 50,150 50,250 C50,350 150,450 250,450 C350,450 450,350 450,250 C450,150 350,50 250,50 Z" />
+                        
+                        <!-- Neural connections -->
+                        <g class="connections">
+                            <line class="connection" x1="120" y1="180" x2="240" y2="130" />
+                            <line class="connection" x1="120" y1="220" x2="240" y2="250" />
+                            <line class="connection" x1="120" y1="260" x2="240" y2="370" />
+                            <line class="connection" x1="240" y1="130" x2="380" y2="180" />
+                            <line class="connection" x1="240" y1="250" x2="380" y2="220" />
+                            <line class="connection" x1="240" y1="370" x2="380" y2="320" />
+                            <line class="connection" x1="240" y1="130" x2="380" y2="320" />
+                            <line class="connection" x1="240" y1="370" x2="380" y2="180" />
+                        </g>
+                        
+                        <!-- Neurons -->
+                        <g class="neurons">
+                            <circle class="neuron input-neuron" cx="120" cy="180" r="15" />
+                            <circle class="neuron input-neuron" cx="120" cy="220" r="15" />
+                            <circle class="neuron input-neuron" cx="120" cy="260" r="15" />
+                            
+                            <circle class="neuron hidden-neuron" cx="240" cy="130" r="15" />
+                            <circle class="neuron hidden-neuron" cx="240" cy="250" r="15" />
+                            <circle class="neuron hidden-neuron" cx="240" cy="370" r="15" />
+                            
+                            <circle class="neuron output-neuron" cx="380" cy="180" r="15" />
+                            <circle class="neuron output-neuron" cx="380" cy="220" r="15" />
+                            <circle class="neuron output-neuron" cx="380" cy="320" r="15" />
+                        </g>
+                        
+                        <!-- Data flow animation -->
+                        <g class="data-particles">
+                            <circle class="data-particle p1" cx="0" cy="0" r="3" />
+                            <circle class="data-particle p2" cx="0" cy="0" r="3" />
+                            <circle class="data-particle p3" cx="0" cy="0" r="3" />
+                            <circle class="data-particle p4" cx="0" cy="0" r="3" />
+                            <circle class="data-particle p5" cx="0" cy="0" r="3" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="loader-text">Initializing Neural Network</div>
+            <div class="loader-progress">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="loader-status">Loading TensorFlow.js</div>
+        </div>
+    </div>
+
+    <!-- Noise Effect -->
+    <div class="noise"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="dot"></div>
+
+    <!-- Matrix Canvas Background -->
+    <canvas id="matrix-canvas"></canvas>
+    
+    <!-- Back to Portfolio Button -->
+    <a href="../index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> <span>Back to Portfolio</span>
+    </a>
+    
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container">
+        <header>
+            <h1>Neural Network <span class="accent">Visualizer</span></h1>
+            <p class="subtitle">An interactive deep learning playground</p>
+        </header>
+
+        <div class="neural-network-container">
+            <!-- Network Control Panel -->
+            <div class="control-panel">
+                <div class="panel-section">
+                    <h3>Network Architecture</h3>
+                    <div class="slider-control">
+                        <label for="layers-slider">Layers</label>
+                        <input type="range" id="layers-slider" min="2" max="5" value="3" class="slider">
+                        <span class="slider-value" id="layers-value">3</span>
+                    </div>
+                    <div class="slider-control">
+                        <label for="neurons-slider">Neurons per Layer</label>
+                        <input type="range" id="neurons-slider" min="2" max="10" value="5" class="slider">
+                        <span class="slider-value" id="neurons-value">5</span>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Training Parameters</h3>
+                    <div class="slider-control">
+                        <label for="learning-rate-slider">Learning Rate</label>
+                        <input type="range" id="learning-rate-slider" min="1" max="100" value="30" class="slider">
+                        <span class="slider-value" id="learning-rate-value">0.03</span>
+                    </div>
+                    <div class="slider-control">
+                        <label for="activation-select">Activation Function</label>
+                        <select id="activation-select" class="select-control">
+                            <option value="sigmoid">Sigmoid</option>
+                            <option value="relu">ReLU</option>
+                            <option value="tanh">Tanh</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Training Data</h3>
+                    <div class="dataset-selector">
+                        <button class="dataset-btn active" data-dataset="xor">XOR</button>
+                        <button class="dataset-btn" data-dataset="circle">Circle</button>
+                        <button class="dataset-btn" data-dataset="spiral">Spiral</button>
+                        <button class="dataset-btn" data-dataset="custom">Custom</button>
+                    </div>
+                    <div class="custom-dataset-container hidden" id="custom-dataset-container">
+                        <canvas id="custom-dataset-canvas" width="200" height="200"></canvas>
+                        <div class="custom-dataset-controls">
+                            <button id="clear-dataset-btn" class="btn btn-small">Clear</button>
+                            <select id="point-class-select">
+                                <option value="0">Class A</option>
+                                <option value="1">Class B</option>
+                            </select>
+                        </div>
+                        <p class="help-text">Click on the canvas to add data points</p>
+                    </div>
+                </div>
+
+                <div class="panel-section actions">
+                    <button id="train-btn" class="btn"><i class="fas fa-play"></i> Train Network</button>
+                    <button id="reset-btn" class="btn btn-outline"><i class="fas fa-redo"></i> Reset</button>
+                    <div class="action-row">
+                        <button id="save-model-btn" class="btn btn-small"><i class="fas fa-download"></i> Save Model</button>
+                        <button id="load-model-btn" class="btn btn-small btn-outline"><i class="fas fa-upload"></i> Load Model</button>
+                        <input type="file" id="model-file-input" class="hidden" accept=".json">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Network Visualization Area -->
+            <div class="visualization-area">
+                <div class="network-container">
+                    <canvas id="network-canvas"></canvas>
+                    <div class="network-stats">
+                        <div class="stat">
+                            <span class="stat-label">Epoch:</span>
+                            <span class="stat-value" id="epoch-value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Loss:</span>
+                            <span class="stat-value" id="loss-value">0.0000</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Accuracy:</span>
+                            <span class="stat-value" id="accuracy-value">0.00%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="plot-container">
+                    <canvas id="decision-boundary-canvas"></canvas>
+                    <div class="plot-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot class-a"></span>
+                            <span>Class A</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot class-b"></span>
+                            <span>Class B</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-gradient"></span>
+                            <span>Decision Boundary</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation-section">
+            <h2>About This Visualization</h2>
+            <p>This interactive tool lets you visualize how neural networks learn to classify data. The network's architecture and parameters can be adjusted in real-time to see how they affect learning.</p>
+            
+            <div class="explanation-cards">
+                <div class="explanation-card">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Network Architecture</h3>
+                    <p>Adjust the number of hidden layers and neurons to see how network complexity impacts learning capabilities.</p>
+                </div>
+                <div class="explanation-card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Learning Process</h3>
+                    <p>Watch weights and activations change during training as the network learns to classify the data.</p>
+                </div>
+                <div class="explanation-card">
+                    <div class="card-icon"><i class="fas fa-border-all"></i></div>
+                    <h3>Decision Boundaries</h3>
+                    <p>Visualize how the network splits the input space to make predictions for different data points.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="advanced-section">
+            <h2>Advanced Features</h2>
+            <div class="advanced-controls" style="display: none;">
+                <div class="advanced-control">
+                    <label for="optimizer-select">Optimizer</label>
+                    <select id="optimizer-select">
+                        <option value="sgd">Stochastic Gradient Descent</option>
+                        <option value="momentum">Momentum</option>
+                        <option value="adam">Adam</option>
+                    </select>
+                </div>
+                <div class="advanced-control">
+                    <label for="batch-size-slider">Batch Size</label>
+                    <input type="range" id="batch-size-slider" min="1" max="32" value="8">
+                    <span id="batch-size-value">8</span>
+                </div>
+                <div class="advanced-control">
+                    <label for="regularization-slider">Regularization (L2)</label>
+                    <input type="range" id="regularization-slider" min="0" max="100" value="0">
+                    <span id="regularization-value">0.00</span>
+                </div>
+            </div>
+            <button id="toggle-advanced-btn" class="btn btn-outline"><i class="fas fa-cog"></i> Show Advanced Features</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by Abhinav Singh | <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> Source Code</a></p>
+    </footer>
+
+    <!-- WebGL Utils -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.18.0/dist/tf.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/matrix-background.js"></script>
+    <script src="js/neural-network.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/datasets.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
