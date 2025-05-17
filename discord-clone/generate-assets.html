@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Clone Asset Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #36393f;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .asset {
+            background-color: #2f3136;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .asset img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #5865f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #4752c4;
+        }
+        .instructions {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #2f3136;
+            padding: 20px;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Discord Clone Asset Generator</h1>
+    
+    <div class="instructions">
+        <p>This tool generates placeholder assets for your Discord clone. Click the button below to generate all the assets, then right-click each image and save it to the appropriate folder inside your Discord clone project.</p>
+        <p>The assets will be generated with the following structure:</p>
+        <ul>
+            <li><strong>Icons:</strong> Save to discord-clone/assets/icons/</li>
+            <li><strong>Images:</strong> Save to discord-clone/assets/images/</li>
+        </ul>
+    </div>
+    
+    <button id="generateBtn">Generate Assets</button>
+    
+    <div class="gallery" id="assetGallery"></div>
+    
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', generateAssets);
+        
+        function generateAssets() {
+            const gallery = document.getElementById('assetGallery');
+            gallery.innerHTML = '';
+            
+            // Generate server icons
+            createServerIcon('discord-icon.png', '#5865F2', 'Discord');
+            createServerIcon('gaming-server.png', '#43B581', 'Gaming');
+            createServerIcon('music-server.png', '#FAA61A', 'Music');
+            createServerIcon('coding-server.png', '#F04747', 'Coding');
+            createServerIcon('portfolio-server.png', '#7289DA', 'Portfolio');
+            
+            // Generate user avatars
+            createUserAvatar('user-avatar.png', '#5865F2');
+            createUserAvatar('bot-avatar.png', '#5865F2', true);
+            createUserAvatar('user1-avatar.png', '#43B581');
+            createUserAvatar('user2-avatar.png', '#FAA61A');
+            createUserAvatar('user3-avatar.png', '#F04747');
+            createUserAvatar('user4-avatar.png', '#7289DA');
+            
+            // Generate other assets
+            createImage('profile-banner.jpg', 600, 200);
+            createImage('portfolio-thumbnail.jpg', 300, 200);
+            createImage('discord-clone.jpg', 300, 200);
+            
+            // Success message
+            alert('Assets generated! Right-click each image and save it to the appropriate folder.');
+        }
+        
+        function createAssetElement(name, src, folder) {
+            const asset = document.createElement('div');
+            asset.className = 'asset';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = name;
+            
+            const title = document.createElement('div');
+            title.textContent = name;
+            
+            const location = document.createElement('div');
+            location.textContent = `Save to: ${folder}`;
+            location.style.fontSize = '12px';
+            location.style.color = '#aaa';
+            
+            asset.appendChild(img);
+            asset.appendChild(title);
+            asset.appendChild(location);
+            
+            document.getElementById('assetGallery').appendChild(asset);
+        }
+        
+        function createServerIcon(filename, color, letter) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 128;
+            canvas.height = 128;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Draw circle background
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(64, 64, 64, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw first letter if provided
+            if (letter) {
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 70px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(letter[0], 64, 64);
+            }
+            
+            // If it's Discord icon, draw a stylized controller
+            if (filename === 'discord-icon.png') {
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.moveTo(40, 50);
+                ctx.lineTo(88, 50);
+                ctx.lineTo(88, 78);
+                ctx.lineTo(40, 78);
+                ctx.closePath();
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(64, 40, 15, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(64, 88, 15, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            createAssetElement(filename, canvas.toDataURL(), 'discord-clone/assets/icons/');
+        }
+        
+        function createUserAvatar(filename, color, isBot = false) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 128;
+            canvas.height = 128;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Draw circle background
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(64, 64, 64, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw a simple face
+            // Eyes
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(48, 50, 10, 0, Math.PI * 2);
+            ctx.arc(80, 50, 10, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Pupils
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.arc(48, 50, 5, 0, Math.PI * 2);
+            ctx.arc(80, 50, 5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Smile
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.arc(64, 70, 20, 0.2 * Math.PI, 0.8 * Math.PI);
+            ctx.stroke();
+            
+            // If it's a bot, draw a gear icon
+            if (isBot) {
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(96, 96, 20, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(96, 96, 12, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw gear teeth
+                for (let i = 0; i < 8; i++) {
+                    ctx.fillStyle = 'white';
+                    ctx.save();
+                    ctx.translate(96, 96);
+                    ctx.rotate(i * Math.PI / 4);
+                    ctx.fillRect(-4, -25, 8, 10);
+                    ctx.restore();
+                }
+            }
+            
+            createAssetElement(filename, canvas.toDataURL(), 'discord-clone/assets/icons/');
+        }
+        
+        function createImage(filename, width, height) {
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Generate a gradient background
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, getRandomColor());
+            gradient.addColorStop(1, getRandomColor());
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+            
+            // Add some random shapes
+            for (let i = 0; i < 10; i++) {
+                ctx.fillStyle = getRandomColor(0.3); // Semi-transparent
+                const size = Math.random() * 60 + 20;
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                
+                ctx.beginPath();
+                if (Math.random() > 0.5) {
+                    // Circle
+                    ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+                } else {
+                    // Rectangle
+                    ctx.rect(x, y, size, size);
+                }
+                ctx.fill();
+            }
+            
+            // Add text
+            const name = filename.split('.')[0];
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(name.replace(/-/g, ' '), width / 2, height / 2);
+            
+            const folder = filename.includes('banner') || filename.includes('thumbnail') || filename.includes('clone') 
+                ? 'discord-clone/assets/images/' 
+                : 'discord-clone/assets/icons/';
+                
+            createAssetElement(filename, canvas.toDataURL(), folder);
+        }
+        
+        function getRandomColor(alpha = 1) {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+    </script>
+</body>
+</html> 

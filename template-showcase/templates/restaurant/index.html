@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Haven - Fine Dining Experience</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar premium-navbar">
+        <div class="nav-brand">Gourmet Haven</div>
+            <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reservation">Reserve</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero premium-hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-fadein">
+            <h1>Culinary Excellence</h1>
+            <p>Experience the art of fine dining</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn primary">View Menu</a>
+                <a href="#reservation" class="btn secondary">Reserve Table</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to Explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section class="offers-section premium-section">
+        <div class="offers-container">
+            <div class="offer-card animate-up">
+                <div class="offer-icon"><i class="fas fa-wine-glass-alt"></i></div>
+                <h3>Wine Tasting</h3>
+                <p>Every Thursday, 6-9 PM</p>
+                <span class="offer-price">$45 per person</span>
+            </div>
+            <div class="offer-card animate-up" style="animation-delay:0.1s;">
+                <div class="offer-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Chef's Special</h3>
+                <p>Daily changing menu</p>
+                <span class="offer-price">From $65</span>
+            </div>
+            <div class="offer-card animate-up" style="animation-delay:0.2s;">
+                <div class="offer-icon"><i class="fas fa-birthday-cake"></i></div>
+                <h3>Private Events</h3>
+                <p>Celebrate in style</p>
+                <span class="offer-price">Custom packages</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section with Interactive Tabs -->
+    <section id="menu" class="menu-section premium-section">
+        <h2><i class="fas fa-utensils"></i> Our Menu</h2>
+        <div class="menu-tabs">
+            <button class="tab-btn active" data-tab="starters">Starters</button>
+            <button class="tab-btn" data-tab="main">Main Course</button>
+            <button class="tab-btn" data-tab="desserts">Desserts</button>
+            <button class="tab-btn" data-tab="wine">Wine List</button>
+        </div>
+        <div class="menu-content">
+            <div class="menu-category active" id="starters">
+                <div class="menu-item animate-up">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Truffle Arancini">
+                    </div>
+                    <div class="menu-item-details">
+                        <h3>Truffle Arancini</h3>
+                        <p>Black truffle, wild mushrooms, aged parmesan</p>
+                        <span class="price">$18</span>
+                    </div>
+                </div>
+                <div class="menu-item animate-up" style="animation-delay:0.1s;">
+                    <div class="menu-item-image">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=80" alt="Lobster Bisque">
+                    </div>
+                    <div class="menu-item-details">
+                        <h3>Lobster Bisque</h3>
+                        <p>Maine lobster, cognac, crème fraîche</p>
+                        <span class="price">$24</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Other menu categories will be loaded dynamically -->
+        </div>
+    </section>
+
+    <!-- About Section with Parallax -->
+    <section id="about" class="about-section premium-section">
+        <div class="about-content">
+            <div class="about-text animate-up">
+                <h2>Our Story</h2>
+                <p>Founded in 2010, Gourmet Haven has been at the forefront of culinary innovation, combining traditional techniques with modern creativity.</p>
+                <div class="chef-signature">
+                    <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=200&q=80" alt="Chef's Signature">
+                    <span>Chef Michael Anderson</span>
+                </div>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item animate-up">
+                    <span class="stat-number">13</span>
+                    <span class="stat-label">Years of Excellence</span>
+                </div>
+                <div class="stat-item animate-up" style="animation-delay:0.1s;">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Michelin Stars</span>
+                </div>
+                <div class="stat-item animate-up" style="animation-delay:0.2s;">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Signature Dishes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section with Lightbox -->
+    <section id="gallery" class="gallery-section premium-section">
+        <h2><i class="fas fa-images"></i> Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item animate-zoom">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Restaurant Interior">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item animate-zoom">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Dining Area">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item animate-zoom">
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=800&q=80" alt="Signature Dish">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+            <div class="gallery-item animate-zoom">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Wine Cellar">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section with Interactive Form -->
+    <section id="reservation" class="reservation-section premium-section">
+        <h2><i class="fas fa-calendar-alt"></i> Reserve a Table</h2>
+        <div class="reservation-container">
+            <form id="reservation-form" class="reservation-form animate-up">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone" required>
+                    <select name="guests" required>
+                        <option value="">Number of Guests</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5+">5+ People</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="date" name="date" required>
+                    <input type="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="special-requests" placeholder="Special Requests"></textarea>
+                </div>
+                <button type="submit" class="btn primary">Reserve Now</button>
+            </form>
+            <div class="reservation-info">
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Friday: 11:00 AM - 10:00 PM</p>
+                    <p>Saturday - Sunday: 10:00 AM - 11:00 PM</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Contact</h3>
+                    <p>Reservations: (555) 123-4567</p>
+                    <p>Email: reservations@gourmethaven.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Map -->
+    <section id="contact" class="contact-section premium-section">
+        <h2><i class="fas fa-map-marker-alt"></i> Find Us</h2>
+        <div class="contact-container">
+            <div class="contact-info animate-up">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>123 Gourmet Street, Culinary District</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(555) 123-4567</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@gourmethaven.com</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-map animate-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30591910525!2d-74.25986432970718!3d40.697149422113014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564750981!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer premium-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Gourmet Haven</h3>
+                <p>Experience culinary excellence in every bite.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#menu">Menu</a>
+                <a href="#reservation">Reservations</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Gourmet Haven. All rights reserved.</p>
+                </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img src="" alt="Gallery Large" id="lightbox-img">
+                    </div>
+
+    <script src="script.js?v=1"></script>
+</body>
+</html> 

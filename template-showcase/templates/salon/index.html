@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamour Salon - Premium Beauty & Wellness</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar premium-navbar">
+        <div class="nav-brand">Glamour Salon</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#stylists">Stylists</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#booking">Book</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero premium-hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-fadein">
+            <h1>Experience True Beauty</h1>
+            <p>Luxury salon services for the modern you</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn primary">Explore Services</a>
+                <a href="#booking" class="btn secondary">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section premium-section">
+        <h2><i class="fa fa-scissors"></i> Our Premium Services</h2>
+        <div class="services-grid">
+            <div class="service-card animate-up">
+                <div class="service-image"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Haircut"></div>
+                <div class="service-details">
+                    <h3>Signature Haircut</h3>
+                    <p>Personalized cuts and styling by top professionals.</p>
+                    <span class="price">From $60</span>
+                </div>
+            </div>
+            <div class="service-card animate-up" style="animation-delay:0.1s;">
+                <div class="service-image"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" alt="Color" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300/ffe4ec/4B1248?text=Luxury+Coloring';"></div>
+                <div class="service-details">
+                    <h3>Luxury Coloring</h3>
+                    <p>Balayage, highlights, and creative color with premium products.</p>
+                    <span class="price">From $120</span>
+                </div>
+            </div>
+            <div class="service-card animate-up" style="animation-delay:0.2s;">
+                <div class="service-image"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Facial"></div>
+                <div class="service-details">
+                    <h3>Rejuvenating Facials</h3>
+                    <p>Advanced skincare and spa treatments for radiant skin.</p>
+                    <span class="price">From $90</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stylists Section -->
+    <section id="stylists" class="stylists-section premium-section">
+        <h2><i class="fa fa-user-tie"></i> Meet Our Artists</h2>
+        <div class="stylists-grid">
+            <div class="stylist-card animate-up">
+                <div class="stylist-image"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=800&q=80" alt="Sarah Johnson" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300/ffe4ec/4B1248?text=Sarah+Johnson';"></div>
+                <div class="stylist-details">
+                    <span class="stylist-badge">Creative Director</span>
+                    <h3>Sarah Johnson</h3>
+                    <p class="stylist-title">Creative Director</p>
+                    <button class="btn tertiary modal-btn" data-modal="sarah">Bio</button>
+                </div>
+            </div>
+            <div class="stylist-card animate-up" style="animation-delay:0.1s;">
+                <div class="stylist-image"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Michael Brown" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300/ffe4ec/4B1248?text=Michael+Brown';"></div>
+                <div class="stylist-details">
+                    <span class="stylist-badge">Color Specialist</span>
+                    <h3>Michael Brown</h3>
+                    <p class="stylist-title">Color Specialist</p>
+                    <button class="btn tertiary modal-btn" data-modal="michael">Bio</button>
+                </div>
+            </div>
+            <div class="stylist-card animate-up" style="animation-delay:0.2s;">
+                <div class="stylist-image"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Emily Davis" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300/ffe4ec/4B1248?text=Emily+Davis';"></div>
+                <div class="stylist-details">
+                    <span class="stylist-badge">Skin Care Expert</span>
+                    <h3>Emily Davis</h3>
+                    <p class="stylist-title">Skin Care Expert</p>
+                    <button class="btn tertiary modal-btn" data-modal="emily">Bio</button>
+                </div>
+            </div>
+        </div>
+        <!-- Modals for stylist bios -->
+        <div class="modal" id="modal-sarah">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Sarah Johnson</h3>
+                <p>Sarah is a renowned creative director with 15+ years of experience in luxury hair design and fashion styling.</p>
+            </div>
+        </div>
+        <div class="modal" id="modal-michael">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Michael Brown</h3>
+                <p>Michael specializes in advanced color techniques and is known for his innovative balayage and highlight artistry.</p>
+            </div>
+        </div>
+        <div class="modal" id="modal-emily">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Emily Davis</h3>
+                <p>Emily is a certified skin care expert, offering rejuvenating facials and personalized skin wellness plans.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section premium-section">
+        <h2><i class="fa fa-images"></i> Our Portfolio</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item animate-zoom"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" alt="Work 1"></div>
+            <div class="gallery-item animate-zoom"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Work 2"></div>
+            <div class="gallery-item animate-zoom"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80" alt="Work 3"></div>
+            <div class="gallery-item animate-zoom"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Work 4"></div>
+        </div>
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="lightbox">
+            <span class="close-lightbox">&times;</span>
+            <img src="" alt="Gallery Large" id="lightbox-img">
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking-section premium-section">
+        <h2><i class="fa fa-calendar-check"></i> Book Your Experience</h2>
+        <form id="booking-form" class="booking-form animate-up">
+            <div class="form-step step-1 active">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="button" class="btn primary next-step">Next</button>
+            </div>
+            <div class="form-step step-2">
+                <select name="service" required>
+                    <option value="">Select Service</option>
+                    <option value="haircut">Signature Haircut</option>
+                    <option value="color">Luxury Coloring</option>
+                    <option value="facial">Rejuvenating Facial</option>
+                </select>
+                <select name="stylist" required>
+                    <option value="">Preferred Stylist</option>
+                    <option value="sarah">Sarah Johnson</option>
+                    <option value="michael">Michael Brown</option>
+                    <option value="emily">Emily Davis</option>
+                </select>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+                <button type="button" class="btn secondary prev-step">Back</button>
+                <button type="button" class="btn primary next-step">Next</button>
+            </div>
+            <div class="form-step step-3">
+                <textarea name="notes" placeholder="Special Requests"></textarea>
+                <button type="button" class="btn secondary prev-step">Back</button>
+                <button type="submit" class="btn primary">Book Now</button>
+            </div>
+            <div class="form-success">
+                <i class="fa fa-check-circle"></i>
+                <p>Thank you! Your appointment is confirmed.</p>
+            </div>
+        </form>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section premium-section">
+        <h2><i class="fa fa-quote-left"></i> Client Love</h2>
+        <div class="testimonials-slider animate-fadein">
+            <div class="testimonial active">
+                <p>"Absolutely the best salon experience! The team is so talented and welcoming."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Client">
+                    <span>Jessica Wilson</span>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p>"My hair color has never looked better. Highly recommend Glamour Salon!"</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=200&q=80" alt="Client">
+                    <span>Maria Lopez</span>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p>"The facial treatments are so relaxing and effective. I feel rejuvenated every visit."</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=200&q=80" alt="Client">
+                    <span>Emily Chen</span>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-controls">
+            <span class="prev-testimonial"><i class="fa fa-chevron-left"></i></span>
+            <span class="next-testimonial"><i class="fa fa-chevron-right"></i></span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section premium-section">
+        <h2><i class="fa fa-envelope"></i> Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info animate-up">
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, Glamour City</div>
+                <div class="info-item"><i class="fas fa-phone"></i> (555) 123-4567</div>
+                <div class="info-item"><i class="fas fa-envelope"></i> info@glamoursalon.com</div>
+                <div class="info-item"><i class="fas fa-clock"></i> Mon-Sat: 9am - 8pm</div>
+            </div>
+            <div class="contact-map animate-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30591910525!2d-74.25986432970718!3d40.697149422113014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564750981!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer premium-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Glamour Salon</h3>
+                <p>Premium beauty & wellness for the modern you.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#services">Services</a>
+                <a href="#stylists">Stylists</a>
+                <a href="#booking">Book</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Glamour Salon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+</body>
+</html> 

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TemplateHub – Premium Website Templates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        :root {
+            --navy: #181c2b;
+            --navy-dark: #101322;
+            --purple: #3a2e5c;
+            --gold: #ffd700;
+            --gold-gradient: linear-gradient(90deg, #ffd700 0%, #ffb300 100%);
+            --white: #fff;
+            --glass: rgba(255,255,255,0.08);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            --radius: 22px;
+            --transition: all 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        html, body {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--navy-dark);
+            color: var(--white);
+            scroll-behavior: smooth;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #181c2b 0%, #3a2e5c 100%);
+        }
+        /* Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 6vw 1.2rem 6vw;
+            background: transparent;
+            position: fixed;
+            width: 100vw;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            transition: background 0.3s;
+        }
+        .navbar.scrolled {
+            background: rgba(24,28,43,0.95);
+            box-shadow: 0 2px 16px 0 rgba(24,28,43,0.12);
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.2s;
+        }
+        .nav-links a:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: width 0.3s;
+            border-radius: 2px;
+            margin-top: 2px;
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(120deg, #181c2b 60%, #3a2e5c 100%);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 70% 30%, #ffd70022 0%, transparent 60%),
+                        radial-gradient(circle at 20% 80%, #ffb30022 0%, transparent 60%);
+            animation: bgmove 12s linear infinite alternate;
+        }
+        @keyframes bgmove {
+            0% { background-position: 70% 30%, 20% 80%; }
+            100% { background-position: 60% 40%, 30% 70%; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            margin-top: 7rem;
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+            animation: fadeInUp 1s cubic-bezier(.4,0,.2,1);
+        }
+        .hero-desc {
+            font-size: 1.35rem;
+            color: #e0e0e0;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1.3s cubic-bezier(.4,0,.2,1);
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1.6s cubic-bezier(.4,0,.2,1);
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+        .hero-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            color: var(--navy-dark);
+            box-shadow: 0 2px 16px 0 #ffd70033;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+            text-align: center;
+        }
+        .hero-btn.secondary {
+            background: var(--glass);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            box-shadow: none;
+        }
+        .hero-btn:hover {
+            box-shadow: 0 4px 32px 0 #ffd70055;
+            transform: translateY(-2px) scale(1.04);
+        }
+        .hero-btn.secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+        /* Floating SVG shapes */
+        .hero-svg {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.18;
+            pointer-events: none;
+            animation: float 7s ease-in-out infinite alternate;
+        }
+        .hero-svg1 { top: 10%; left: 5%; width: 120px; animation-delay: 0s; }
+        .hero-svg2 { bottom: 8%; right: 8%; width: 160px; animation-delay: 2s; }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-30px) scale(1.08); }
+        }
+        /* Templates Showcase */
+        .templates-section {
+            padding: 6rem 0 4rem 0;
+            background: transparent;
+            position: relative;
+        }
+        .templates-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            animation: fadeInUp 1.2s;
+        }
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .template-card {
+            background: var(--glass);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1.5px solid #ffd70033;
+            backdrop-filter: blur(8px);
+            animation: fadeInUp 1.3s;
+        }
+        .template-card:hover {
+            box-shadow: 0 8px 40px 0 #ffd70044;
+            transform: translateY(-8px) scale(1.03);
+            border-color: var(--gold);
+        }
+        .template-icon-wrapper {
+            width: 100%;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+        }
+        .template-icon {
+            font-size: 2.8rem;
+            color: var(--gold);
+            animation: float-icon 5s infinite alternate;
+        }
+        @keyframes float-icon {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-12px) scale(1.08); }
+        }
+        .template-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+        .template-desc {
+            color: #e0e0e0;
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            min-height: 48px;
+        }
+        .template-btn {
+            background: var(--gold-gradient);
+            color: var(--navy-dark);
+            border: none;
+            border-radius: 20px;
+            padding: 0.7rem 1.7rem;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 12px 0 #ffd70033;
+            transition: var(--transition);
+        }
+        .template-btn:hover {
+            box-shadow: 0 4px 24px 0 #ffd70055;
+            transform: scale(1.06);
+        }
+        /* Features */
+        .features-section {
+            padding: 5rem 0 3rem 0;
+            background: transparent;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .features-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.1rem;
+            color: var(--gold);
+            margin-bottom: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--glass);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 1.2rem 1.2rem 1.2rem;
+            text-align: center;
+            border: 1.5px solid #ffd70022;
+            transition: var(--transition);
+            animation: fadeInUp 1.4s;
+        }
+        .feature-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 6px 32px 0 #ffd70033;
+            transform: translateY(-6px) scale(1.03);
+        }
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 0.7rem;
+            animation: float 4s infinite alternate;
+        }
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.4rem;
+        }
+        .feature-desc {
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 0 3rem 0;
+            background: transparent;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .testimonials-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.1rem;
+            color: var(--gold);
+            margin-bottom: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: var(--glass);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            border: 1.5px solid #ffd70022;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            animation: fadeInUp 1.5s;
+        }
+        .testimonial-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 6px 32px 0 #ffd70033;
+            transform: translateY(-6px) scale(1.03);
+        }
+        .testimonial-img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px 0 #ffd70033;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        .testimonial-role {
+            color: #e0e0e0;
+            font-size: 0.98rem;
+            margin-bottom: 0.7rem;
+        }
+        .testimonial-text {
+            color: #f5f5f5;
+            font-size: 1.08rem;
+            font-style: italic;
+        }
+        /* Footer */
+        .footer {
+            background: #181c2b;
+            color: #fff;
+            padding: 3.5rem 0 1.5rem 0;
+            margin-top: 4rem;
+            border-top: 1.5px solid #ffd70022;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .footer-section h3 {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.7rem;
+            transition: color 0.2s;
+        }
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+        .footer-bottom {
+            text-align: center;
+            color: #ffd700cc;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+        }
+        .footer-social a {
+            color: var(--gold);
+            font-size: 1.5rem;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .footer-social a:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 900px) {
+            .navbar { padding: 1.2rem 3vw; }
+            .hero-title { font-size: 2.3rem; }
+            .templates-grid, .features-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .footer-content { flex-direction: column; gap: 2rem; }
+        }
+        @media (max-width: 600px) {
+            .navbar { flex-direction: column; gap: 1rem; padding: 1rem 2vw; }
+            .nav-links { gap: 1.2rem; }
+            .hero-content { margin-top: 4rem; }
+            .templates-grid, .features-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 1.5rem; }
+            .template-icon-wrapper { height: 48px; }
+            .template-icon { font-size: 2rem; }
+            .hero-buttons {
+                gap: 1rem;
+                padding: 0 0.5rem;
+            }
+            .hero-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+                min-width: 180px;
+            }
+        }
+        @media (max-width: 480px) {
+            .navbar, .footer-content {
+                padding: 0.7rem 1vw;
+            }
+            .hero-content {
+                margin-top: 2rem;
+            }
+            .hero-title {
+                font-size: 1.3rem;
+            }
+            .hero-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+                min-width: 160px;
+            }
+            .hero-buttons {
+                gap: 0.8rem;
+            }
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        button, .btn, .tab-btn, .template-btn, .hero-btn {
+            min-width: 44px;
+            min-height: 44px;
+            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+        }
+        .class-card, .template-card, .feature-card, .testimonial-card {
+            padding: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .class-time {
+            min-width: 0;
+        }
+        h1, h2, h3 {
+            font-size: clamp(1.2rem, 6vw, 2rem);
+        }
+        .hero-title {
+            font-size: clamp(1.5rem, 8vw, 2.3rem);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">TemplateHub</div>
+        <div class="nav-links">
+            <a href="#templates">Templates</a>
+            <a href="#features">Features</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <svg class="hero-svg hero-svg1" viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="#ffd700"/></svg>
+        <svg class="hero-svg hero-svg2" viewBox="0 0 160 160"><rect x="0" y="0" width="160" height="160" rx="80" fill="#ffb300"/></svg>
+        <div class="hero-content">
+            <div class="hero-title">Premium Website Templates<br>for Modern Businesses</div>
+            <div class="hero-desc">Discover a curated collection of elegant, high-performance templates for every industry.<br>Effortlessly launch your next project with style and confidence.</div>
+            <div class="hero-buttons">
+                <a href="#templates" class="hero-btn">Browse Templates</a>
+                <a href="#features" class="hero-btn secondary">Why Choose Us</a>
+            </div>
+        </div>
+    </section>
+    <section class="templates-section" id="templates">
+        <div class="templates-title">Our Templates</div>
+        <div class="templates-grid">
+            <div class="template-card">
+                <div class="template-icon-wrapper"><div class="template-icon"><i class="fas fa-utensils"></i></div></div>
+                <div class="template-title">Restaurant</div>
+                <div class="template-desc">A mouth-watering design for restaurants, cafes, and food businesses. Menu, reservations, and gallery included.</div>
+                <button class="template-btn" onclick="window.location.href='templates/restaurant/index.html'">Live Preview</button>
+            </div>
+            <div class="template-card">
+                <div class="template-icon-wrapper"><div class="template-icon"><i class="fas fa-spa"></i></div></div>
+                <div class="template-title">Salon & Spa</div>
+                <div class="template-desc">Elegant and relaxing, perfect for salons, spas, and beauty services. Booking, staff, and reviews built-in.</div>
+                <button class="template-btn" onclick="window.location.href='templates/salon/index.html'">Live Preview</button>
+            </div>
+            <div class="template-card">
+                <div class="template-icon-wrapper"><div class="template-icon"><i class="fas fa-dumbbell"></i></div></div>
+                <div class="template-title">Fitness</div>
+                <div class="template-desc">Dynamic and energetic for gyms, trainers, and fitness centers. Class schedules, trainers, and progress tracking.</div>
+                <button class="template-btn" onclick="window.location.href='templates/fitness/index.html'">Live Preview</button>
+            </div>
+            <div class="template-card">
+                <div class="template-icon-wrapper"><div class="template-icon"><i class="fas fa-home"></i></div></div>
+                <div class="template-title">Real Estate</div>
+                <div class="template-desc">Sophisticated and modern for realtors and agencies. Listings, calculators, and virtual tours included.</div>
+                <button class="template-btn" onclick="window.location.href='templates/real-estate/index.html'">Live Preview</button>
+            </div>
+        </div>
+    </section>
+    <section class="features-section" id="features">
+        <div class="features-title">Why Choose TemplateHub?</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="feature-title">Fully Responsive</div>
+                <div class="feature-desc">Looks stunning on every device, from mobile to desktop.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                <div class="feature-title">Elegant Customization</div>
+                <div class="feature-desc">Easily personalize colors, fonts, and layouts to match your brand.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <div class="feature-title">Lightning Fast</div>
+                <div class="feature-desc">Optimized for speed and performance, ensuring a smooth user experience.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-code"></i></div>
+                <div class="feature-title">Clean, Modern Code</div>
+                <div class="feature-desc">Well-structured, documented, and easy to maintain.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-star"></i></div>
+                <div class="feature-title">Premium Support</div>
+                <div class="feature-desc">Get help from our expert team whenever you need it.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                <div class="feature-title">Secure & Reliable</div>
+                <div class="feature-desc">Built with best practices for security and reliability.</div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-title">What Our Clients Say</div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <img class="testimonial-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 1">
+                <div class="testimonial-name">Jessica W.</div>
+                <div class="testimonial-role">Cafe Owner</div>
+                <div class="testimonial-text">“TemplateHub made launching my restaurant website a breeze. The design is gorgeous and my customers love it!”</div>
+            </div>
+            <div class="testimonial-card">
+                <img class="testimonial-img" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 2">
+                <div class="testimonial-name">Michael B.</div>
+                <div class="testimonial-role">Fitness Coach</div>
+                <div class="testimonial-text">“The fitness template is so easy to use and looks amazing. My bookings have doubled!”</div>
+            </div>
+            <div class="testimonial-card">
+                <img class="testimonial-img" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Client 3">
+                <div class="testimonial-name">Emily D.</div>
+                <div class="testimonial-role">Salon Owner</div>
+                <div class="testimonial-text">“I love how customizable and elegant the salon template is. Highly recommended!”</div>
+            </div>
+            <div class="testimonial-card">
+                <img class="testimonial-img" src="https://randomuser.me/api/portraits/men/41.jpg" alt="Client 4">
+                <div class="testimonial-name">John S.</div>
+                <div class="testimonial-role">Realtor</div>
+                <div class="testimonial-text">“The real estate template helped me stand out and attract more clients. The virtual tour feature is a game changer.”</div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TemplateHub</h3>
+                <p>Premium website templates for modern businesses.<br>Build your brand with elegance and ease.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#templates">Templates</a>
+                <a href="#features">Features</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> support@templatehub.com</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 TemplateHub. All rights reserved.
+        </div>
+    </footer>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        // Animate on scroll
+        function animateOnScroll() {
+            document.querySelectorAll('.template-card, .feature-card, .testimonial-card').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 60) {
+                    el.style.opacity = 1;
+                    el.style.transform = 'none';
+                } else {
+                    el.style.opacity = 0;
+                    el.style.transform = 'translateY(40px)';
+                }
+            });
+        }
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

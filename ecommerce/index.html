@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShop - Sustainable Products</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="navbar-logo">
+                    <i class="fas fa-leaf"></i> EcoShop
+                </a>
+                <div class="navbar-search">
+                    <input type="text" placeholder="Search products...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#shop" class="nav-link">
+                            <i class="fas fa-store"></i> Shop
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="cart-link">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            <span class="cart-badge" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="login-link">
+                            <i class="fas fa-user"></i> Login
+                        </a>
+                    </li>
+                </ul>
+                <div class="navbar-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Eco-Friendly Products for a Sustainable Lifestyle</h1>
+                <p>Shop our curated collection of sustainable, high-quality products that help reduce waste and environmental impact.</p>
+                <a href="#shop" class="btn btn-primary">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eco-Friendly</h3>
+                    <p>Sustainable materials that minimize environmental impact</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <h3>Fast Shipping</h3>
+                    <p>Free shipping on orders over $50</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-undo"></i>
+                    <h3>Easy Returns</h3>
+                    <p>30-day hassle-free return policy</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Checkout</h3>
+                    <p>Your data is protected with advanced encryption</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="shop">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="shop-filter">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="eco">Eco</button>
+                    <button class="filter-btn" data-filter="tech">Tech</button>
+                    <button class="filter-btn" data-filter="fashion">Fashion</button>
+                </div>
+                <div class="sort-group">
+                    <label for="sort">Sort by:</label>
+                    <select id="sort">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid" id="products-container">
+                <!-- Products will be loaded dynamically via JavaScript -->
+                <div class="product-loader">
+                    <div class="loader"></div>
+                    <p>Loading products...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Containers -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Cart</h2>
+                <span class="close" id="close-cart">&times;</span>
+            </div>
+            <div class="modal-body" id="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="btn btn-secondary" id="clear-cart">Clear Cart</button>
+                <button class="btn btn-primary" id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content login-modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <span class="close" id="close-login">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="register">Register</button>
+                </div>
+
+                <div class="tab-content active" id="login-tab">
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <div class="input-with-icon">
+                                <input type="email" id="login-email" required placeholder="Your email address">
+                                <i class="fas fa-envelope input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="login-password" required placeholder="Your password">
+                                <i class="fas fa-lock input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="remember-forgot">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block login-btn">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-content" id="register-tab">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="register-name">Full Name</label>
+                            <div class="input-with-icon">
+                                <input type="text" id="register-name" required placeholder="Your full name">
+                                <i class="fas fa-user input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <div class="input-with-icon">
+                                <input type="email" id="register-email" required placeholder="Your email address">
+                                <i class="fas fa-envelope input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="register-password" required placeholder="Create a password">
+                                <i class="fas fa-lock input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirm Password</label>
+                            <div class="input-with-icon">
+                                <input type="password" id="register-confirm-password" required placeholder="Confirm your password">
+                                <i class="fas fa-lock input-icon"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block login-btn">
+                                <i class="fas fa-user-plus"></i> Create Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p id="login-footer">Don't have an account? <a href="#" data-tab="register" class="tab-link">Sign up now</a></p>
+                <p id="register-footer" style="display: none;">Already have an account? <a href="#" data-tab="login" class="tab-link">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content product-modal-content">
+            <div class="modal-header">
+                <h2 id="product-modal-title">Product Details</h2>
+                <span class="close" id="close-product">&times;</span>
+            </div>
+            <div class="modal-body product-modal-body">
+                <div class="product-details">
+                    <!-- Product details will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content checkout-modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <span class="close" id="close-checkout">&times;</span>
+            </div>
+            <div class="modal-body checkout-modal-body">
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Shipping</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Payment</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Review</span>
+                    </div>
+                </div>
+
+                <div class="step-content active" id="step-1">
+                    <h3>Shipping Information</h3>
+                    <form id="shipping-form">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP Code</label>
+                                <input type="text" id="zip" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" required>
+                                <option value="">Select Country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Continue to Payment</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="step-content" id="step-2">
+                    <h3>Payment Information</h3>
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="card-name">Name on Card</label>
+                            <input type="text" id="card-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry (MM/YY)</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="XXX" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary" id="back-to-shipping">Back</button>
+                            <button type="submit" class="btn btn-primary">Review Order</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="step-content" id="step-3">
+                    <h3>Order Review</h3>
+                    <div class="order-summary">
+                        <div class="order-items" id="order-items">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        <div class="order-details">
+                            <div class="shipping-details" id="review-shipping">
+                                <!-- Shipping details will be loaded here -->
+                            </div>
+                            <div class="payment-details" id="review-payment">
+                                <!-- Payment details will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="order-totals">
+                            <div class="total-row">
+                                <span>Subtotal:</span>
+                                <span id="review-subtotal">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Shipping:</span>
+                                <span id="review-shipping-cost">$0.00</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Tax:</span>
+                                <span id="review-tax">$0.00</span>
+                            </div>
+                            <div class="total-row total">
+                                <span>Total:</span>
+                                <span id="review-total">$0.00</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary" id="back-to-payment">Back</button>
+                            <button type="button" class="btn btn-primary" id="place-order">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Placed Successfully!</h2>
+                <span class="close" id="close-success">&times;</span>
+            </div>
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Thank you for your order!</h3>
+                <p>Your order has been placed successfully. You will receive a confirmation email shortly.</p>
+                <p>Order #: <span id="order-number">ECO-1234</span></p>
+                <button class="btn btn-primary" id="continue-shopping">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EcoShop</h3>
+                    <p>Sustainable products for a better planet.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoShop. All rights reserved.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

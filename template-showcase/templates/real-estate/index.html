@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Estates - Premium Real Estate</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar premium-navbar">
+        <div class="nav-brand">Luxury Estates</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#properties">Properties</a>
+            <a href="#agents">Agents</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section class="hero premium-hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content animate-fadein">
+            <h1>Find Your Dream Home</h1>
+            <p>Discover luxury properties in prime locations</p>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Enter location, property type, or keyword">
+                    <button class="btn primary"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="search-filters">
+                    <select>
+                        <option value="">Property Type</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="villa">Villa</option>
+                        <option value="commercial">Commercial</option>
+                    </select>
+                    <select>
+                        <option value="">Price Range</option>
+                        <option value="100k-300k">$100K - $300K</option>
+                        <option value="300k-500k">$300K - $500K</option>
+                        <option value="500k-1m">$500K - $1M</option>
+                        <option value="1m+">$1M+</option>
+                    </select>
+                    <select>
+                        <option value="">Bedrooms</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section id="properties" class="properties-section premium-section">
+        <h2><i class="fas fa-home"></i> Featured Properties</h2>
+        <div class="properties-grid">
+            <div class="property-card animate-up">
+                <div class="property-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Luxury Villa">
+                    <div class="property-badge">Featured</div>
+                    <div class="property-actions">
+                        <button class="action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="action-btn"><i class="fas fa-share"></i></button>
+                    </div>
+                </div>
+                <div class="property-details">
+                    <div class="property-price">$1,250,000</div>
+                    <h3>Modern Luxury Villa</h3>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> Beverly Hills, CA</p>
+                    <div class="property-features">
+                        <span><i class="fas fa-bed"></i> 5 Beds</span>
+                        <span><i class="fas fa-bath"></i> 4 Baths</span>
+                        <span><i class="fas fa-ruler-combined"></i> 4,500 sqft</span>
+                    </div>
+                    <p class="property-description">Stunning modern villa with panoramic views, smart home features, and luxury finishes throughout.</p>
+                    <a href="#" class="btn primary">View Details</a>
+                </div>
+            </div>
+            <div class="property-card animate-up" style="animation-delay:0.1s;">
+                <div class="property-image">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Penthouse">
+                    <div class="property-badge">New</div>
+                    <div class="property-actions">
+                        <button class="action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="action-btn"><i class="fas fa-share"></i></button>
+                    </div>
+                </div>
+                <div class="property-details">
+                    <div class="property-price">$2,500,000</div>
+                    <h3>Luxury Penthouse</h3>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> Manhattan, NY</p>
+                    <div class="property-features">
+                        <span><i class="fas fa-bed"></i> 4 Beds</span>
+                        <span><i class="fas fa-bath"></i> 3.5 Baths</span>
+                        <span><i class="fas fa-ruler-combined"></i> 3,200 sqft</span>
+                    </div>
+                    <p class="property-description">Exclusive penthouse with private terrace, city views, and premium amenities.</p>
+                    <a href="#" class="btn primary">View Details</a>
+                </div>
+            </div>
+            <div class="property-card animate-up" style="animation-delay:0.2s;">
+                <div class="property-image">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="Beach House">
+                    <div class="property-badge">Hot Deal</div>
+                    <div class="property-actions">
+                        <button class="action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="action-btn"><i class="fas fa-share"></i></button>
+                    </div>
+                </div>
+                <div class="property-details">
+                    <div class="property-price">$3,750,000</div>
+                    <h3>Oceanfront Estate</h3>
+                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> Malibu, CA</p>
+                    <div class="property-features">
+                        <span><i class="fas fa-bed"></i> 6 Beds</span>
+                        <span><i class="fas fa-bath"></i> 5.5 Baths</span>
+                        <span><i class="fas fa-ruler-combined"></i> 6,800 sqft</span>
+                    </div>
+                    <p class="property-description">Spectacular beachfront estate with infinity pool, private beach access, and panoramic ocean views.</p>
+                    <a href="#" class="btn primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agents Section -->
+    <section id="agents" class="agents-section premium-section">
+        <h2><i class="fas fa-user-tie"></i> Our Expert Agents</h2>
+        <div class="agents-grid">
+            <div class="agent-card animate-up">
+                <div class="agent-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="John Smith">
+                </div>
+                <div class="agent-details">
+                    <span class="agent-badge">Top Agent</span>
+                    <h3>John Smith</h3>
+                    <p class="agent-specialty">Luxury Properties</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Properties Sold</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                    <div class="agent-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="agent-card animate-up" style="animation-delay:0.1s;">
+                <div class="agent-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Sarah Johnson">
+                </div>
+                <div class="agent-details">
+                    <span class="agent-badge">Rising Star</span>
+                    <h3>Sarah Johnson</h3>
+                    <p class="agent-specialty">Commercial Real Estate</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-number">75+</span>
+                            <span class="stat-label">Properties Sold</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                    <div class="agent-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="agent-card animate-up" style="animation-delay:0.2s;">
+                <div class="agent-image">
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80" alt="Michael Chen">
+                </div>
+                <div class="agent-details">
+                    <span class="agent-badge">Veteran Agent</span>
+                    <h3>Michael Chen</h3>
+                    <p class="agent-specialty">Investment Properties</p>
+                    <div class="agent-stats">
+                        <div class="stat">
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Properties Sold</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                    <div class="agent-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section premium-section">
+        <div class="about-content">
+            <div class="about-text animate-up">
+                <h2>Why Choose Us</h2>
+                <p>With over 20 years of experience in luxury real estate, we provide exceptional service and expertise to help you find your perfect property.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-medal"></i>
+                        <h3>Expertise</h3>
+                        <p>Our agents are certified professionals with extensive market knowledge.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Trust</h3>
+                        <p>We build lasting relationships based on transparency and integrity.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Results</h3>
+                        <p>Consistently delivering exceptional results for our clients.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item animate-up">
+                    <span class="stat-number">20+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item animate-up" style="animation-delay:0.1s;">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Properties Sold</span>
+                </div>
+                <div class="stat-item animate-up" style="animation-delay:0.2s;">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section premium-section">
+        <h2><i class="fas fa-envelope"></i> Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info animate-up">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Visit Us</h3>
+                    <p>123 Luxury Avenue, Beverly Hills, CA 90210</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>(555) 123-4567</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>info@luxuryestates.com</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Hours</h3>
+                    <p>Mon-Fri: 9AM - 6PM</p>
+                    <p>Sat: 10AM - 4PM</p>
+                </div>
+            </div>
+            <form class="contact-form animate-up">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Your Phone">
+                </div>
+                <div class="form-group">
+                    <select name="inquiry" required>
+                        <option value="">Select Inquiry Type</option>
+                        <option value="buying">Buying a Property</option>
+                        <option value="selling">Selling a Property</option>
+                        <option value="renting">Renting a Property</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer premium-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Luxury Estates</h3>
+                <p>Your trusted partner in luxury real estate.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#properties">Properties</a>
+                <a href="#agents">Agents</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Luxury Estates. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=1"></script>
+</body>
+</html> 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Clone - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/auth-styles.css">
+    <link rel="icon" href="assets/icons/discord-icon.svg">
+</head>
+<body class="dark-theme">
+    <div class="auth-container">
+        <div class="auth-sidebar">
+            <div class="sidebar-content">
+                <div class="discord-logo">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </div>
+                <h2>Welcome back!</h2>
+                <p>We're so excited to see you again!</p>
+                <div class="sidebar-image"></div>
+            </div>
+        </div>
+        <div class="auth-main">
+            <div class="auth-form-container">
+                <div class="form-header">
+                    <h2>Login</h2>
+                </div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email or Phone Number</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-link">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                    <button type="submit" class="auth-button">Login</button>
+                    <div class="register-link">
+                        Need an account? <a href="register.html">Register</a>
+                    </div>
+                </form>
+            </div>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    <i class="fas fa-moon"></i> Switch to Light Mode
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Back to Portfolio Button -->
+    <a href="../index.html" class="back-to-portfolio">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+    
+    <script src="js/auth.js"></script>
+</body>
+</html> 
