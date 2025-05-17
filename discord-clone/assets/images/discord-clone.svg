@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#36393F" />
+  
+  <!-- Server sidebar -->
+  <rect x="0" y="0" width="72" height="500" fill="#202225" />
+  <circle cx="36" cy="36" r="20" fill="#5865F2" />
+  <circle cx="36" cy="96" r="20" fill="#9B59B6" />
+  <circle cx="36" cy="156" r="20" fill="#E74C3C" />
+  <circle cx="36" cy="216" r="20" fill="#2ECC71" />
+  <circle cx="36" cy="276" r="20" fill="#3498DB" />
+  <rect x="30" y="76" width="12" height="2" fill="#72767D" />
+  
+  <!-- Channels sidebar -->
+  <rect x="72" y="0" width="240" height="500" fill="#2F3136" />
+  <rect x="72" y="0" width="240" height="48" fill="#2F3136" stroke="#202225" stroke-width="1" />
+  <text x="96" y="30" font-family="Arial, sans-serif" font-size="16" fill="#FFFFFF">Portfolio Server</text>
+  <rect x="92" y="70" width="200" height="20" rx="3" fill="#42464D" />
+  <rect x="92" y="100" width="200" height="20" rx="3" fill="#42464D" />
+  <rect x="92" y="130" width="200" height="20" rx="3" fill="#42464D" />
+  <rect x="92" y="160" width="200" height="20" rx="3" fill="#42464D" />
+  <rect x="72" y="448" width="240" height="52" fill="#292B2F" />
+  <circle cx="96" cy="474" r="16" fill="#3BA55D" />
+  
+  <!-- Main content area -->
+  <rect x="312" y="0" width="488" height="48" fill="#36393F" stroke="#202225" stroke-width="1" />
+  <text x="342" y="30" font-family="Arial, sans-serif" font-size="16" fill="#FFFFFF">#general</text>
+  <rect x="332" y="120" width="450" height="60" rx="3" fill="#32353B" />
+  <rect x="332" y="200" width="450" height="60" rx="3" fill="#32353B" />
+  <rect x="332" y="280" width="450" height="60" rx="3" fill="#32353B" />
+  <rect x="332" y="450" width="450" height="40" rx="8" fill="#40444B" />
+</svg> 

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/icons/discord-icon.svg">
+    <!-- Preload critical assets to prevent blinking -->
+    <link rel="preload" href="assets/icons/discord-icon.svg" as="image">
+    <link rel="preload" href="assets/icons/user-avatar.svg" as="image">
+    <link rel="preload" href="assets/icons/default-avatar.svg" as="image">
+    <link rel="preload" href="assets/icons/bot-avatar.svg" as="image">
+    <link rel="preload" href="assets/icons/user1-avatar.svg" as="image">
+    <link rel="preload" href="assets/icons/user2-avatar.svg" as="image">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Servers sidebar -->
+        <div class="servers-sidebar">
+            <div class="server-icon home-icon">
+                <i class="fab fa-discord"></i>
+                <div class="tooltip">Home</div>
+            </div>
+            <div class="server-separator"></div>
+            <div class="server-icon">
+                <img src="assets/icons/gaming-server.svg" alt="Gaming Server">
+                <div class="tooltip">Gaming</div>
+            </div>
+            <div class="server-icon">
+                <img src="assets/icons/music-server.svg" alt="Music Server">
+                <div class="tooltip">Music</div>
+            </div>
+            <div class="server-icon selected">
+                <img src="assets/icons/coding-server.svg" alt="Coding Server">
+                <div class="tooltip">Coding</div>
+            </div>
+            <div class="server-icon">
+                <img src="assets/icons/portfolio-server.svg" alt="Portfolio Server">
+                <div class="tooltip">Portfolio</div>
+                <div class="server-notification">3</div>
+            </div>
+            <div class="server-icon add-server">
+                <i class="fas fa-plus"></i>
+                <div class="tooltip">Add a Server</div>
+            </div>
+            <div class="server-icon explore">
+                <i class="fas fa-compass"></i>
+                <div class="tooltip">Explore Public Servers</div>
+            </div>
+        </div>
+
+        <!-- Channels sidebar -->
+        <div class="channels-sidebar">
+            <div class="server-header">
+                <h3>Portfolio Server</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="channels-container">
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>TEXT CHANNELS</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-hashtag"></i>
+                        <span>welcome</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-hashtag"></i>
+                        <span>announcements</span>
+                    </div>
+                    <div class="channel selected">
+                        <i class="fas fa-hashtag"></i>
+                        <span>general</span>
+                        <div class="unread-indicator"></div>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-hashtag"></i>
+                        <span>projects</span>
+                        <div class="unread-indicator"></div>
+                    </div>
+                </div>
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-down"></i>
+                        <span>VOICE CHANNELS</span>
+                    </div>
+                    <div class="channel voice-channel">
+                        <i class="fas fa-volume-up"></i>
+                        <span>General Voice</span>
+                        <div class="voice-icons">
+                            <i class="fas fa-user"></i>
+                            <span>2</span>
+                        </div>
+                    </div>
+                    <div class="channel voice-channel">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Coding Help</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user-controls">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="assets/icons/user-avatar.svg" alt="User Avatar">
+                        <div class="status-indicator online"></div>
+                    </div>
+                    <div class="user-details">
+                        <div class="username">YourUsername</div>
+                        <div class="status">#1234</div>
+                    </div>
+                </div>
+                <div class="controls-icons">
+                    <i class="fas fa-microphone" title="Mute"></i>
+                    <i class="fas fa-headphones" title="Deafen"></i>
+                    <i class="fas fa-cog" title="User Settings"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="content-area">
+            <!-- Channel header -->
+            <div class="channel-header">
+                <div class="channel-info">
+                    <i class="fas fa-hashtag"></i>
+                    <span class="channel-name">general</span>
+                </div>
+                <div class="channel-topic">
+                    General discussion for portfolio development
+                </div>
+                <div class="channel-actions">
+                    <i class="fas fa-bell" title="Notification Settings"></i>
+                    <i class="fas fa-thumbtack" title="Pinned Messages"></i>
+                    <i class="fas fa-user-friends" title="Member List"></i>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <i class="fas fa-inbox" title="Inbox"></i>
+                    <i class="fas fa-question-circle" title="Help"></i>
+                </div>
+            </div>
+
+            <!-- Messages area -->
+            <div class="messages-container">
+                <!-- Messages will be loaded dynamically based on selected server -->
+            </div>
+
+            <!-- Message input -->
+            <div class="message-input-container">
+                <div class="input-attachments">
+                    <i class="fas fa-plus-circle" title="Attach"></i>
+                </div>
+                <div class="message-input-wrapper">
+                    <input type="text" placeholder="Message #general" class="message-input">
+                    <div class="input-icons">
+                        <i class="fas fa-gift" title="Send Gift"></i>
+                        <i class="fas fa-file-image" title="Upload File"></i>
+                        <i class="fas fa-smile" title="Emoji"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Members sidebar -->
+        <div class="members-sidebar">
+            <div class="members-group">
+                <h3 class="members-heading">ONLINE — 4</h3>
+                <div class="member">
+                    <div class="member-avatar">
+                        <img src="assets/icons/bot-avatar.svg" alt="Bot Avatar">
+                        <div class="status-indicator online"></div>
+                    </div>
+                    <div class="member-details">
+                        <div class="member-name bot">DiscordBot</div>
+                        <div class="member-status">Bot</div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-avatar">
+                        <img src="assets/icons/user1-avatar.svg" alt="User Avatar">
+                        <div class="status-indicator online"></div>
+                    </div>
+                    <div class="member-details">
+                        <div class="member-name">JaneDoe</div>
+                        <div class="member-status">Working on portfolio</div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-avatar">
+                        <img src="assets/icons/user2-avatar.svg" alt="User Avatar">
+                        <div class="status-indicator idle"></div>
+                    </div>
+                    <div class="member-details">
+                        <div class="member-name">JohnDev</div>
+                        <div class="member-status">Idle</div>
+                    </div>
+                </div>
+            </div>
+            <div class="members-group">
+                <h3 class="members-heading">OFFLINE — 2</h3>
+                <div class="member">
+                    <div class="member-avatar">
+                        <img src="assets/icons/default-avatar.svg" alt="User Avatar">
+                        <div class="status-indicator offline"></div>
+                    </div>
+                    <div class="member-details">
+                        <div class="member-name">CodeMaster</div>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="member-avatar">
+                        <img src="assets/icons/default-avatar.svg" alt="User Avatar">
+                        <div class="status-indicator offline"></div>
+                    </div>
+                    <div class="member-details">
+                        <div class="member-name">DesignPro</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Settings Modal -->
+    <div class="modal user-settings-modal">
+        <div class="modal-content">
+            <div class="modal-sidebar">
+                <div class="sidebar-header">User Settings</div>
+                <div class="sidebar-item selected" data-section="account-settings">
+                    <i class="fas fa-user"></i>
+                    My Account
+                </div>
+                <div class="sidebar-item" data-section="profile-settings">
+                    <i class="fas fa-id-card"></i>
+                    Profile
+                </div>
+                <div class="sidebar-item" data-section="privacy-settings">
+                    <i class="fas fa-shield-alt"></i>
+                    Privacy & Safety
+                </div>
+                <div class="sidebar-item" data-section="notification-settings">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </div>
+                <div class="sidebar-separator"></div>
+                <div class="sidebar-item" data-section="appearance-settings">
+                    <i class="fas fa-paint-brush"></i>
+                    Appearance
+                </div>
+                <div class="sidebar-item" data-section="language-settings">
+                    <i class="fas fa-globe"></i>
+                    Language
+                </div>
+                <div class="sidebar-item" data-section="activity-settings">
+                    <i class="fas fa-gamepad"></i>
+                    Activity Status
+                </div>
+            </div>
+            
+            <div class="modal-main">
+                <div class="modal-header">
+                    <h3>My Account</h3>
+                    <button class="modal-close"><i class="fas fa-times"></i></button>
+                </div>
+                
+                <div class="modal-body">
+                    <!-- Account Settings -->
+                    <div id="account-settings" class="settings-section active">
+                        <form id="account-form" class="form-section">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" class="form-input" value="John Doe">
+                                <small>Your username is how other users see you in the app.</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-input" value="john@example.com">
+                                <small>Your email address is used for account recovery and notifications.</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="Add a phone number">
+                                <small>Add a phone number to enable two-factor authentication.</small>
+                            </div>
+                            
+                            <button type="submit" class="button primary">Save Changes</button>
+                        </form>
+                        
+                        <form id="password-form" class="form-section">
+                            <h4>Password</h4>
+                            <div class="form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" name="current-password" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" name="new-password" class="form-input">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password" name="confirm-password" class="form-input">
+                            </div>
+                            
+                            <button type="submit" class="button primary">Update Password</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Profile Settings -->
+                    <div id="profile-settings" class="settings-section">
+                        <div class="form-section">
+                            <div class="form-group">
+                                <label>Profile Picture</label>
+                                <div class="avatar-upload">
+                                    <div class="avatar-preview">
+                                        <img src="https://i.pravatar.cc/150?img=1" alt="Profile Picture">
+                                    </div>
+                                    <button type="button" class="button secondary avatar-upload-btn">
+                                        Change Avatar
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="about-me">About Me</label>
+                                <textarea id="about-me" class="form-input" rows="4" placeholder="Tell us about yourself..."></textarea>
+                            </div>
+                            
+                            <button type="button" class="button primary">Save Changes</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Settings -->
+                    <div id="privacy-settings" class="settings-section">
+                        <div class="form-section">
+                            <h4>Privacy Settings</h4>
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="privacy-toggle" data-setting="show-online-status" checked>
+                                    <span>Show Online Status</span>
+                                </label>
+                                <small>Allow others to see when you're online</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="privacy-toggle" data-setting="show-activity-status" checked>
+                                    <span>Show Activity Status</span>
+                                </label>
+                                <small>Allow others to see what you're doing</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="privacy-toggle" data-setting="allow-friend-requests" checked>
+                                    <span>Allow Friend Requests</span>
+                                </label>
+                                <small>Allow others to send you friend requests</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notification Settings -->
+                    <div id="notification-settings" class="settings-section">
+                        <div class="form-section">
+                            <h4>Notification Settings</h4>
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="notification-toggle" data-setting="desktop-notifications" checked>
+                                    <span>Desktop Notifications</span>
+                                </label>
+                                <small>Receive notifications on your desktop</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="notification-toggle" data-setting="message-notifications" checked>
+                                    <span>Message Notifications</span>
+                                </label>
+                                <small>Receive notifications for new messages</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="notification-toggle" data-setting="mention-notifications" checked>
+                                    <span>Mention Notifications</span>
+                                </label>
+                                <small>Receive notifications when you're mentioned</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Appearance Settings -->
+                    <div id="appearance-settings" class="settings-section">
+                        <h3>Theme</h3>
+                        <div class="theme-options">
+                            <div class="theme-option" data-theme="dark">
+                                <img src="assets/dark-theme-preview.png" alt="Dark Theme" class="theme-preview">
+                                <span>Dark</span>
+                            </div>
+                            <div class="theme-option" data-theme="light">
+                                <img src="assets/light-theme-preview.png" alt="Light Theme" class="theme-preview">
+                                <span>Light</span>
+                            </div>
+                        </div>
+
+                        <h3>Message Display</h3>
+                        <div class="form-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" class="appearance-toggle" data-setting="compact-mode">
+                                <span class="toggle-slider"></span>
+                                Compact Mode
+                            </label>
+                            <p class="setting-description">Show messages in a more compact format</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" class="appearance-toggle" data-setting="show-timestamps">
+                                <span class="toggle-slider"></span>
+                                Show Timestamps
+                            </label>
+                            <p class="setting-description">Display message timestamps</p>
+                        </div>
+
+                        <button class="save-button" onclick="saveAppearanceSettings()">Save Changes</button>
+                    </div>
+                    
+                    <!-- Language Settings -->
+                    <div id="language-settings" class="settings-section">
+                        <div class="form-section">
+                            <h4>Language</h4>
+                            <div class="form-group">
+                                <label for="language-select">Display Language</label>
+                                <select id="language-select" class="form-input">
+                                    <option value="en-US">English (US)</option>
+                                    <option value="en-GB">English (UK)</option>
+                                    <option value="es-ES">Español</option>
+                                    <option value="fr-FR">Français</option>
+                                    <option value="de-DE">Deutsch</option>
+                                    <option value="it-IT">Italiano</option>
+                                    <option value="pt-BR">Português</option>
+                                    <option value="ru-RU">Русский</option>
+                                    <option value="ja-JP">日本語</option>
+                                    <option value="ko-KR">한국어</option>
+                                    <option value="zh-CN">中文 (简体)</option>
+                                </select>
+                                <small>Choose your preferred language for the interface</small>
+                            </div>
+                            
+                            <h4>Text & Images</h4>
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="language-toggle" data-setting="show-images" checked>
+                                    <span>Show Images</span>
+                                </label>
+                                <small>Display images in messages</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" class="language-toggle" data-setting="show-emojis" checked>
+                                    <span>Show Emojis</span>
+                                </label>
+                                <small>Display emojis in messages</small>
+                            </div>
+                            
+                            <button type="button" class="button primary" id="save-language-btn">Save Changes</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Settings -->
+                    <div id="activity-settings" class="settings-section">
+                        <div class="form-section">
+                            <h4>Activity Status</h4>
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select id="status" class="form-input">
+                                    <option value="online">Online</option>
+                                    <option value="idle">Idle</option>
+                                    <option value="dnd">Do Not Disturb</option>
+                                    <option value="invisible">Invisible</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="custom-status">Custom Status</label>
+                                <input type="text" id="custom-status" class="form-input" placeholder="What's on your mind?">
+                            </div>
+                            
+                            <button type="button" class="button primary">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Server Creation Modal -->
+    <div class="modal server-creation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Your Server</h3>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="server-creation-form">
+                    <div class="form-group">
+                        <label>SERVER NAME</label>
+                        <input type="text" class="form-input" placeholder="Enter a server name">
+                    </div>
+                    <div class="form-group">
+                        <label>SERVER ICON</label>
+                        <div class="avatar-upload">
+                            <div class="avatar-preview">
+                                <span>A</span>
+                            </div>
+                            <button class="avatar-upload-btn">Upload</button>
+                        </div>
+                    </div>
+                    <div class="server-templates">
+                        <h4>Choose a template</h4>
+                        <div class="server-template selected">
+                            <div class="template-icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="template-info">
+                                <div class="template-name">Create My Own</div>
+                                <div class="template-desc">Start from scratch</div>
+                            </div>
+                        </div>
+                        <div class="server-template">
+                            <div class="template-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div class="template-info">
+                                <div class="template-name">Gaming</div>
+                                <div class="template-desc">For gaming communities</div>
+                            </div>
+                        </div>
+                        <div class="server-template">
+                            <div class="template-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="template-info">
+                                <div class="template-name">Music</div>
+                                <div class="template-desc">For music lovers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="back-button">Back</button>
+                <button class="create-server-button">Create Server</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Modal -->
+    <div class="modal status-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Status</h3>
+                <button class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="status-options">
+                    <div class="status-option selected">
+                        <div class="status-indicator online"></div>
+                        <span>Online</span>
+                    </div>
+                    <div class="status-option">
+                        <div class="status-indicator idle"></div>
+                        <span>Idle</span>
+                    </div>
+                    <div class="status-option">
+                        <div class="status-indicator dnd"></div>
+                        <span>Do Not Disturb</span>
+                    </div>
+                    <div class="status-option">
+                        <div class="status-indicator invisible"></div>
+                        <span>Invisible</span>
+                    </div>
+                </div>
+                <div class="custom-status">
+                    <label>Custom Status</label>
+                    <input type="text" class="form-input" placeholder="What's happening?">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="save-status-button">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Portfolio Button -->
+    <a href="../index.html" class="back-to-portfolio">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Check if user is logged in
+        if (!localStorage.getItem('discord_user')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html> 
